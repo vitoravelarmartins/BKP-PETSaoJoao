@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:petsaojoao/pages/splash_screen/splashScreen.dart';
 //import 'package:petsaojoao/pages/cadTutorForm/tutorForm.dart';
 
@@ -7,6 +8,10 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.blueAccent[200],
+    ));
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Pet São João',

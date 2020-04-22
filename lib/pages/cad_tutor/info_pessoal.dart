@@ -5,8 +5,8 @@ import 'package:petsaojoao/components/comp_cad_tutor/sizebox.dart';
 import 'package:masked_text/masked_text.dart';
 import 'package:cpfcnpj/cpfcnpj.dart';
 import 'package:petsaojoao/pages/cad_tutor/infor_endereco.dart';
-
 import 'package:petsaojoao/components/comp_cad_tutor/textfield.dart';
+import 'package:petsaojoao/components/comp_cad_tutor/alert.dart';
 
 TextEditingController nameController = new TextEditingController();
 TextEditingController rgcontroller = new TextEditingController();
@@ -23,29 +23,42 @@ class _Info_pessoalState extends State<Info_pessoal> {
   bool erroNome = false;
 
   void validaForm(String nome, String cpf, String rg) {
-    if (validarCPF(cpf) == true &&
-        validaNome(nome) == true &&
-        validarRG(rg) == true) {
+    var valNome = validaNome(nome);
+    var valRg = validarRG(rg);
+    var valCPF = validarCPF(cpf);
+
+    if (valNome == true && valRg == true && valCPF == true) {
       print("Todos os Dados Passaram!!!");
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => info_endereco()));
     }
-    validarCPF(cpf);
-    validaNome(nome);
-    validarRG(rg);
   }
 
   bool validaNome(String nome) {
-    if (nome.length < 5) {
+    String patttern =
+        r'(^[a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇ ]*$)';
+    RegExp regExp = new RegExp(patttern);
+    var ind = nome.indexOf(" ");
+
+    if (!regExp.hasMatch(nome) || nome.length < 5 || ind == -1) {
       setState(() {
         erroNome = true;
-        print("Nome muito curto");
+        print("Nome inválido");
         showDialog(
             context: context,
             builder: (_) => AlertDialog(
-                  title: Text("Nome Invalido"),
+                  title: Center(
+                      child: Column(children: [
+                    Icon(
+                      Icons.person,
+                      size: 30,
+                      color: Colors.red[900],
+                    ),
+                    Text("Nome Inválido"),
+                  ])),
                   content: Text(
-                    "Digite seu nome e sobrenome.\n\n Ex.: Jose Pereira da Silva",
+                    "Digite seu nome completo, como esta no RG - Ex.: José Pereira da Silva",
+                    style: TextStyle(color: Colors.black54),
                   ),
                   actions: <Widget>[
                     FlatButton(
@@ -68,38 +81,9 @@ class _Info_pessoalState extends State<Info_pessoal> {
     }
   }
 
-  bool validarCPF(String cpf) {
-    if (CPF.isValid(cpf)) {
-      print("CPF ok");
-      setState(() {
-        erroCPF = false;
-      });
-
-      return true;
-    } else {
-      print("CPF INVALIDO");
-      setState(() {
-        erroCPF = true;
-        showDialog(
-            context: context,
-            builder: (_) => AlertDialog(
-                  title: Text("CPF Invalido"),
-                  content: Text(
-                    "Digite seu nome e sobrenome.\n\n Ex.: Jose Pereira da Silva",
-                  ),
-                  actions: <Widget>[
-                    FlatButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: Text("ok"),
-                    ),
-                  ],
-                ),
-            barrierDismissible: true);
-      });
-      return false;
-    }
+  void alertaRG() {
+    alertaDoc(context, "RG Inválido",
+        "Número de RG digitado inválido, por favor verifique os números digitados.");
   }
 
   bool validarRG(String rg) {
@@ -107,6 +91,7 @@ class _Info_pessoalState extends State<Info_pessoal> {
       setState(() {
         erroRG = true;
         print("RG -> Numeros de caracteres invalido");
+        alertaRG();
       });
       return false;
     } else {
@@ -116,6 +101,7 @@ class _Info_pessoalState extends State<Info_pessoal> {
             print("RG  invalido");
             setState(() {
               erroRG = true;
+              alertaRG();
             });
             return false;
           }
@@ -159,19 +145,44 @@ class _Info_pessoalState extends State<Info_pessoal> {
     }
   }
 
+  bool validarCPF(String cpf) {
+    if (CPF.isValid(cpf)) {
+      print("CPF ok");
+      setState(() {
+        erroCPF = false;
+      });
+
+      return true;
+    } else {
+      print("CPF INVALIDO");
+      setState(() {
+        erroCPF = true;
+        alertaDoc(context, "CPF Inválido",
+            "Número de CPF digitado inválido, por favor verifique os números digitados.");
+      });
+      return false;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.blueAccent[200],
+    ));
+
     return Scaffold(
-      backgroundColor: Colors.white,
+      //backgroundColor: Colors.white,
+
       appBar: AppBar(
         automaticallyImplyLeading: false,
         leading: FlatButton(
           onPressed: () {
-            //Navigator.pushReplacement(context, dashboard())
+            //Navigator.pushReplacement(context, dashboard());
             // Navigator.push(
             //     context, MaterialPageRoute(builder: (context) => dashboard()));
             Navigator.pop(context);
-            //Navigator.maybePop(context);
+            // Navigator.maybePop(context);
           },
           child: Icon(
             Icons.clear,
@@ -202,7 +213,7 @@ class _Info_pessoalState extends State<Info_pessoal> {
         textFieldDoc(rgcontroller, "xx.xxx.xxx", 10, erroRG, "RG", null),
         sizebox(20.0),
         textFieldDoc(cpfcontroller, "xxx.xxx.xxx-xx", 14, erroCPF, "CPF", null),
-        sizebox(50.0),
+        sizebox(40.0),
         Container(
             padding: EdgeInsets.only(
               right: 15,
@@ -215,6 +226,7 @@ class _Info_pessoalState extends State<Info_pessoal> {
               },
               child: Icon(Icons.keyboard_arrow_right),
             )),
+        sizebox(20.0),
       ]),
     );
   }

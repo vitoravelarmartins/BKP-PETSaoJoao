@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:petsaojoao/pages/cad_tutor/cadastro_tutor.dart';
 import 'package:petsaojoao/pages/cad_animal_encotrado/cadastro_animal_encontrado.dart';
@@ -7,6 +8,11 @@ import 'package:petsaojoao/pages/cad_animal_encotrado/cadastro_animal_encontrado
 class dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.blueAccent[200],
+    ));
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(

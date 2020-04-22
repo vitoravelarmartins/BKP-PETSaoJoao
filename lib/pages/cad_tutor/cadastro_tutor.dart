@@ -13,7 +13,7 @@ class cadastro_tutor extends StatefulWidget {
 
 class _cadastro_tutorState extends State<cadastro_tutor> {
   void navigationToNextPage() {
-    // Navigator.push(context, _createRoute());
+    //Navigator.push(context, _createRoute());
     Navigator.pushReplacement(context, _createRoute());
   }
 
@@ -30,7 +30,8 @@ class _cadastro_tutorState extends State<cadastro_tutor> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIOverlays([]);
+    //SystemChrome.setEnabledSystemUIOverlays([]);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -65,6 +66,7 @@ class _cadastro_tutorState extends State<cadastro_tutor> {
 Route _createRoute() {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => Info_pessoal(),
+    transitionDuration: const Duration(milliseconds: 500),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       var begin = Offset(0.0, 1.0);
       var end = Offset.zero;
