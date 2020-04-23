@@ -2,19 +2,19 @@
 
 import 'dart:async';
 import 'package:flutter/services.dart';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:petsaojoao/components/comp_cad_tutor/sizebox.dart';
-import 'package:petsaojoao/pages/cad_tutor/info_pessoal.dart';
+import 'package:petsaojoao/pages/dashboard/dashboard.dart';
 import 'package:progress_indicators/progress_indicators.dart';
+import 'package:petsaojoao/pages/dashboard/dashboard.dart';
 
-class cadastro_tutor extends StatefulWidget {
+class Fim_cadastro_tutor extends StatefulWidget {
   @override
-  _cadastro_tutorState createState() => _cadastro_tutorState();
+  _Fim_cadastro_tutorState createState() => _Fim_cadastro_tutorState();
 }
 
-class _cadastro_tutorState extends State<cadastro_tutor> {
+class _Fim_cadastro_tutorState extends State<Fim_cadastro_tutor> {
   void navigationToNextPage() {
     //Navigator.push(context, _createRoute());
     Navigator.pushReplacement(context, _createRoute());
@@ -48,7 +48,7 @@ class _cadastro_tutorState extends State<cadastro_tutor> {
               child: Container(
                 width: 350,
                 child: Text(
-                  'Ops, não temos seus dados ainda',
+                  'Pronto',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
@@ -110,7 +110,7 @@ class _cadastro_tutorState extends State<cadastro_tutor> {
 
 Route _createRoute() {
   return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => Info_pessoal(),
+    pageBuilder: (context, animation, secondaryAnimation) => dashboard(),
     transitionDuration: const Duration(milliseconds: 1800),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       var begin = Offset(0.0, 1.0);

@@ -10,12 +10,12 @@ import 'package:petsaojoao/pages/cad_tutor/info_contato.dart';
 
 import 'package:masked_text/masked_text.dart';
 
-class info_endereco extends StatefulWidget {
+class Info_endereco extends StatefulWidget {
   @override
-  _info_enderecoState createState() => _info_enderecoState();
+  _Info_enderecoState createState() => _Info_enderecoState();
 }
 
-class _info_enderecoState extends State<info_endereco> {
+class _Info_enderecoState extends State<Info_endereco> {
   TextEditingController _searchCepController = TextEditingController();
   TextEditingController _logradouroController = TextEditingController();
   TextEditingController _bairroController = TextEditingController();
@@ -39,13 +39,13 @@ class _info_enderecoState extends State<info_endereco> {
   FocusNode myFocusNode;
 
   @override
-  void validaForm(String numero, bool erro) {
+  void _validaForm(String numero, bool erro) {
     var numeroCasa = validaNumero(numero);
     var erroCep = erro;
 
     if (erroCep == false && numeroCasa == true) {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => info_contato()));
+          context, MaterialPageRoute(builder: (context) => Info_contato()));
     }
   }
 
@@ -113,7 +113,7 @@ class _info_enderecoState extends State<info_endereco> {
     });
   }
 
-  void chamacep(String value) {
+  void _chamacep(String value) {
     _searchCep();
   }
 
@@ -195,7 +195,7 @@ class _info_enderecoState extends State<info_endereco> {
         sizebox(10.0),
         info_dados(),
         sizebox(20.0),
-        textFieldCEP(_searchCep, chamacep, _searchCepController, 8, erroCEP,
+        textFieldCEP(_searchCep, _chamacep, _searchCepController, 8, erroCEP,
             "CEP", null, _searchCep),
         sizebox(30.0),
         textFieldEndereco(ativarEndereco, _logradouroController, readOnlyLogra,
@@ -241,7 +241,7 @@ class _info_enderecoState extends State<info_endereco> {
             alignment: Alignment.bottomRight,
             child: FloatingActionButton(
               onPressed: () {
-                validaForm(_numeroCasaController.text, erroCEP);
+                _validaForm(_numeroCasaController.text, erroCEP);
               },
               child: Icon(Icons.keyboard_arrow_right),
             )),

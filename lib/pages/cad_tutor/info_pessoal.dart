@@ -9,9 +9,9 @@ import 'package:petsaojoao/components/comp_cad_tutor/textfield.dart';
 import 'package:petsaojoao/components/comp_cad_tutor/alert.dart';
 import 'package:petsaojoao/components/comp_cad_tutor/button.dart';
 
-TextEditingController nameController = new TextEditingController();
-TextEditingController rgcontroller = new TextEditingController();
-TextEditingController cpfcontroller = new TextEditingController();
+TextEditingController _nameController = new TextEditingController();
+TextEditingController _rgcontroller = new TextEditingController();
+TextEditingController _cpfcontroller = new TextEditingController();
 
 class Info_pessoal extends StatefulWidget {
   @override
@@ -36,19 +36,19 @@ class _Info_pessoalState extends State<Info_pessoal> {
     myFocusNode.dispose();
   }
 
-  void validaForm(String nome, String cpf, String rg) {
-    var valNome = validaNome(nome);
-    var valRg = validarRG(rg);
-    var valCPF = validarCPF(cpf);
+  void _validaForm(String nome, String cpf, String rg) {
+    var valNome = _validaNome(nome);
+    var valRg = _validarRG(rg);
+    var valCPF = _validarCPF(cpf);
 
     if (valNome == true && valRg == true && valCPF == true) {
       print("Todos os Dados Passaram!!!");
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => info_endereco()));
+          context, MaterialPageRoute(builder: (context) => Info_endereco()));
     }
   }
 
-  bool validaNome(String nome) {
+  bool _validaNome(String nome) {
     String patttern =
         r'(^[a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇ ]*$)';
     RegExp regExp = new RegExp(patttern);
@@ -100,7 +100,7 @@ class _Info_pessoalState extends State<Info_pessoal> {
         "Número de RG digitado inválido, por favor verifique os números digitados.");
   }
 
-  bool validarRG(String rg) {
+  bool _validarRG(String rg) {
     if (rg.length != 10) {
       setState(() {
         erroRG = true;
@@ -162,7 +162,7 @@ class _Info_pessoalState extends State<Info_pessoal> {
     }
   }
 
-  bool validarCPF(String cpf) {
+  bool _validarCPF(String cpf) {
     if (CPF.isValid(cpf)) {
       print("CPF ok");
       setState(() {
@@ -225,14 +225,14 @@ class _Info_pessoalState extends State<Info_pessoal> {
         sizebox(10.0),
         info_dados(),
         sizebox(20.0),
-        textFielNome(myFocusNode.requestFocus, nameController, erroNome,
+        textFielNome(myFocusNode.requestFocus, _nameController, erroNome,
             "Nome completo"),
         sizebox(30.0),
         textFieldDoc(
-            myFocusNode, rgcontroller, "xx.xxx.xxx", 10, erroRG, "RG", null),
+            myFocusNode, _rgcontroller, "xx.xxx.xxx", 10, erroRG, "RG", null),
         sizebox(20.0),
         textFieldDoc(
-            null, cpfcontroller, "xxx.xxx.xxx-xx", 14, erroCPF, "CPF", null),
+            null, _cpfcontroller, "xxx.xxx.xxx-xx", 14, erroCPF, "CPF", null),
         sizebox(40.0),
         Container(
             padding: EdgeInsets.only(
@@ -241,8 +241,8 @@ class _Info_pessoalState extends State<Info_pessoal> {
             alignment: Alignment.bottomRight,
             child: FloatingActionButton(
               onPressed: () {
-                validaForm(
-                    nameController.text, cpfcontroller.text, rgcontroller.text);
+                _validaForm(_nameController.text, _cpfcontroller.text,
+                    _rgcontroller.text);
               },
               child: Icon(Icons.keyboard_arrow_right),
             )),
