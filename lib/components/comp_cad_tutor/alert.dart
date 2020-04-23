@@ -59,3 +59,34 @@ void alertaCEP(context, title, content) {
           ),
       barrierDismissible: true);
 }
+
+void alertaEmail(context, title, content) {
+  showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+            title: Center(
+                child: Column(children: [
+              Icon(
+                Icons.email,
+                size: 30,
+                color: Colors.red[900],
+              ),
+              Text(
+                title,
+              ),
+            ])),
+            content: Text(
+              content,
+              style: TextStyle(color: Colors.black54),
+            ),
+            actions: <Widget>[
+              FlatButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text("ok"),
+              ),
+            ],
+          ),
+      barrierDismissible: true);
+}

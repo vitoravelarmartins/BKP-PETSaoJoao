@@ -6,6 +6,7 @@ import 'package:petsaojoao/components/comp_cad_tutor/textfield.dart';
 import 'package:petsaojoao/pages/cad_tutor/consulta_CEP/result_cep.dart';
 import 'package:petsaojoao/pages/cad_tutor/consulta_CEP/via_cep_service.dart';
 import 'package:petsaojoao/components/comp_cad_tutor/textfield.dart';
+import 'package:petsaojoao/pages/cad_tutor/info_contato.dart';
 
 import 'package:masked_text/masked_text.dart';
 
@@ -38,6 +39,36 @@ class _info_enderecoState extends State<info_endereco> {
   FocusNode myFocusNode;
 
   @override
+  void validaForm(String numero, bool erro) {
+    var numeroCasa = validaNumero(numero);
+    var erroCep = erro;
+
+    if (erroCep == false && numeroCasa == true) {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => info_contato()));
+    }
+  }
+
+  bool validaNumero(String numero) {
+    String patttern = r'(^[0-9]*$)';
+    RegExp regExp = new RegExp(patttern);
+    if (!regExp.hasMatch(numero) || numero.isEmpty) {
+      setState(() {
+        erroNumero = true;
+      });
+      print("passando");
+      alertaCEP(context, "Número Inválido",
+          "Por favor, digite um  número válido, caso sua residência não possua número digite numero 0.");
+      return false;
+    } else {
+      setState(() {
+        erroNumero = false;
+        return true;
+      });
+    }
+    return true;
+  }
+
   void initState() {
     super.initState();
 
@@ -102,15 +133,22 @@ class _info_enderecoState extends State<info_endereco> {
     if (resultCep.localidade == "São João da Boa Vista") {
       myFocusNode.requestFocus();
       setState(() {
+        erroCEP = false;
         _result = resultCep.toJson();
         _resultLocalidade = resultCep.localidade;
         _resultLogradouro = resultCep.logradouro;
         _resultBairro = resultCep.bairro;
+        return true;
       });
 
       _searching(false);
     } else {
+      setState(() {
+        erroCEP = true;
+      });
+
       popupCEPErro();
+      return false;
     }
   }
 
@@ -159,7 +197,7 @@ class _info_enderecoState extends State<info_endereco> {
         sizebox(20.0),
         textFieldCEP(_searchCep, chamacep, _searchCepController, 8, erroCEP,
             "CEP", null, _searchCep),
-        sizebox(20.0),
+        sizebox(30.0),
         textFieldEndereco(ativarEndereco, _logradouroController, readOnlyLogra,
             null, "Logradouro", null, readOnlyActionLogra),
         sizebox(5.0),
@@ -202,7 +240,9 @@ class _info_enderecoState extends State<info_endereco> {
             ),
             alignment: Alignment.bottomRight,
             child: FloatingActionButton(
-              onPressed: () {},
+              onPressed: () {
+                validaForm(_numeroCasaController.text, erroCEP);
+              },
               child: Icon(Icons.keyboard_arrow_right),
             )),
         sizebox(20.0),

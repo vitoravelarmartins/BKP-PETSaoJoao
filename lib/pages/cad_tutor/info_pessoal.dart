@@ -4,9 +4,10 @@ import 'package:petsaojoao/components/comp_cad_tutor/text_label.dart';
 import 'package:petsaojoao/components/comp_cad_tutor/sizebox.dart';
 import 'package:masked_text/masked_text.dart';
 import 'package:cpfcnpj/cpfcnpj.dart';
-import 'package:petsaojoao/pages/cad_tutor/infor_endereco.dart';
+import 'package:petsaojoao/pages/cad_tutor/info_endereco.dart';
 import 'package:petsaojoao/components/comp_cad_tutor/textfield.dart';
 import 'package:petsaojoao/components/comp_cad_tutor/alert.dart';
+import 'package:petsaojoao/components/comp_cad_tutor/button.dart';
 
 TextEditingController nameController = new TextEditingController();
 TextEditingController rgcontroller = new TextEditingController();
@@ -21,6 +22,19 @@ class _Info_pessoalState extends State<Info_pessoal> {
   bool erroCPF = false;
   bool erroRG = false;
   bool erroNome = false;
+  FocusNode myFocusNode;
+
+  void initState() {
+    super.initState();
+
+    myFocusNode = FocusNode();
+  }
+
+  void dispose() {
+    super.dispose();
+
+    myFocusNode.dispose();
+  }
 
   void validaForm(String nome, String cpf, String rg) {
     var valNome = validaNome(nome);
@@ -112,6 +126,7 @@ class _Info_pessoalState extends State<Info_pessoal> {
             setState(() {
               erroRG = true;
             });
+            alertaRG();
             return false;
           }
           break;
@@ -121,6 +136,7 @@ class _Info_pessoalState extends State<Info_pessoal> {
             setState(() {
               erroRG = true;
             });
+            alertaRG();
             return false;
           }
           break;
@@ -130,6 +146,7 @@ class _Info_pessoalState extends State<Info_pessoal> {
             setState(() {
               erroRG = true;
             });
+            alertaRG();
             return false;
           }
           break;
@@ -208,11 +225,14 @@ class _Info_pessoalState extends State<Info_pessoal> {
         sizebox(10.0),
         info_dados(),
         sizebox(20.0),
-        textFielNome(nameController, erroNome, "Nome completo"),
+        textFielNome(myFocusNode.requestFocus, nameController, erroNome,
+            "Nome completo"),
         sizebox(30.0),
-        textFieldDoc(rgcontroller, "xx.xxx.xxx", 10, erroRG, "RG", null),
+        textFieldDoc(
+            myFocusNode, rgcontroller, "xx.xxx.xxx", 10, erroRG, "RG", null),
         sizebox(20.0),
-        textFieldDoc(cpfcontroller, "xxx.xxx.xxx-xx", 14, erroCPF, "CPF", null),
+        textFieldDoc(
+            null, cpfcontroller, "xxx.xxx.xxx-xx", 14, erroCPF, "CPF", null),
         sizebox(40.0),
         Container(
             padding: EdgeInsets.only(
@@ -235,6 +255,7 @@ class _Info_pessoalState extends State<Info_pessoal> {
 Route dashboard() {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => Info_pessoal(),
+    transitionDuration: const Duration(milliseconds: 500),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       var begin = Offset(0.0, 1.0);
       var end = Offset.zero;

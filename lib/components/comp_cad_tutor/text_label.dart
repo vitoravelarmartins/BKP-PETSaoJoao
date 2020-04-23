@@ -10,7 +10,8 @@ Widget conta_passos(text) {
 Widget pergunta_form(text) {
   return Text(
     text,
-    style: TextStyle(fontSize: 30, color: Colors.white),
+    textAlign: TextAlign.center,
+    style: TextStyle(fontSize: 25, color: Colors.white),
   );
 }
 
