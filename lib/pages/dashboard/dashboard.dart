@@ -2,6 +2,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:petsaojoao/pages/cad_tutor/cadastro_tutor.dart';
 import 'package:petsaojoao/pages/cad_animal_encotrado/cadastro_animal_encontrado.dart';
+import 'package:petsaojoao/pages/cad_meu_animal/cad_meu_animal.dart';
 
 //Acompanhe desing do projeto aqui --> https://www.figma.com/file/GYFrt79mzIbOUXXmFyDgwL/Material-Baseline-Design-Kit?node-id=38%3A5814
 
@@ -37,6 +38,16 @@ class dashboard extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => cadastro_animal_encontrado()),
+                  );
+                },
+                child: Text("Cadastro Animal Encontrado ")),
+            FlatButton(
+                color: Colors.green,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CadastroAnimal()),
                   );
                 },
                 child: Text("Cadastro Animal Encontrado ")),
