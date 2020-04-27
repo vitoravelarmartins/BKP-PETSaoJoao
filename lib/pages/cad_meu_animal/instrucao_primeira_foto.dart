@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:petsaojoao/pages/cad_meu_animal/instrucao_primeira_foto.dart';
+import 'package:petsaojoao/components/comp_cad_meu_animal/camera_info.dart';
+import 'package:petsaojoao/pages/cad_meu_animal/tirar_primeira_foto.dart';
 
-class CadastroAnimal extends StatelessWidget {
+class InstrucaoPrimeiraFoto extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -11,7 +12,7 @@ class CadastroAnimal extends StatelessWidget {
         backgroundColor: Colors.blueAccent[200],
         body: ListView(
           children: <Widget>[
-            Container(child: Image.asset('assets/background/superior.png')),
+            Container(child: Image.asset('assets/cad_animal/cachorro_lateral.png')),
             SizedBox(
               height: 100,
             ),
@@ -19,11 +20,11 @@ class CadastroAnimal extends StatelessWidget {
               child: Container(
                 width: 350,
                 child: Text(
-                  'Que tal cadastrar seu pet?',
+                  'Por favor, tente tirar uma foto de perfil igual a imagem acima...',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 40,
+                    fontSize: 25,
                   ),
                 ),
               ),
@@ -34,10 +35,14 @@ class CadastroAnimal extends StatelessWidget {
               disabledColor: Colors.green,
               disabledTextColor: Colors.grey,
               onPressed: () async {
+                final camera = await getCameraInfo();
+
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => InstrucaoPrimeiraFoto(),
+                    builder: (context) => TirarPrimeiraFoto(
+                      camera: camera,
+                    ),
                   ),
                 );
               },
