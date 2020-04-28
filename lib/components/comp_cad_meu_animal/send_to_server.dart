@@ -28,7 +28,7 @@ sendToServer() async {
       ]
     });
 
-    var response = await dio.post(link, data: data);
+    await dio.post(link, data: data);
   } catch (e) {
     print(e);
   }
