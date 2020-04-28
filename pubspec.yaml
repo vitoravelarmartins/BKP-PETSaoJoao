@@ -15,7 +15,6 @@ version: 1.0.0+1
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
-  #sdk: ">=1.12.13 <2.0.0"
 
 dependencies:
   flutter:
@@ -27,6 +26,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   camera: ^0.5.7+4
   path: ^1.6.3
+  path_provider:
   shared_preferences: ^0.5.3
   flutter_launcher_icons: "^0.7.3"
   font_awesome_flutter: ^8.8.1
@@ -35,7 +35,6 @@ dependencies:
   cpfcnpj: ^1.0.3
   http: ^0.12.0+4
   dio: ^3.0.9
-  path_provider: "<2.0.0"
 
 #Icone do Aplicativo
 #Use comando seguinte para carregar o icon do app >flutter packages pub run flutter_launcher_icons:main<
