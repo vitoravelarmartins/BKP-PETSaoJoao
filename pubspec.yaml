@@ -25,7 +25,7 @@ dependencies:
   # Ao Adicionar depencias use comando >flutter packages get<
   cupertino_icons: ^0.1.2
   camera: ^0.5.7+4
-  #path_provider: ^1.6.1
+  path_provider: ^1.6.7
   path: ^1.6.3
   shared_preferences: ^0.5.3
   flutter_launcher_icons: "^0.7.3"
