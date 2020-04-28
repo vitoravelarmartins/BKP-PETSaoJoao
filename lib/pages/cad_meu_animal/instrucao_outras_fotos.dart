@@ -12,6 +12,7 @@ class InstrucaoOutrasFoto extends StatelessWidget {
         backgroundColor: Colors.blueAccent[200],
         body: ListView(
           children: <Widget>[
+            Container(child: Image.asset('assets/background/superior.png')),
             SizedBox(
               height: 100,
             ),
@@ -23,7 +24,7 @@ class InstrucaoOutrasFoto extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 40,
+                    fontSize: 25,
                   ),
                 ),
               ),
@@ -51,6 +52,7 @@ class InstrucaoOutrasFoto extends StatelessWidget {
                 child: (Text('Certo!')),
               ),
             ),
+            Container(child: Image.asset('assets/background/inferior.png')),
           ],
         ),
       ),

@@ -31,7 +31,7 @@ class TirarPrimeiraFotoState extends State<TirarPrimeiraFoto> {
     super.initState();
     _controller = CameraController(
       widget.camera,
-      ResolutionPreset.ultraHigh,
+      ResolutionPreset.high,
     );
 
     _initializeControllerFuture = _controller.initialize();
