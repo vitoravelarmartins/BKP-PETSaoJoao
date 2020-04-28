@@ -34,7 +34,8 @@ class FimCadAnimal extends StatelessWidget {
               disabledColor: Colors.green,
               disabledTextColor: Colors.grey,
               onPressed: () async {
-                sendToServer();
+                final resposta = await sendToServer();
+                if (resposta == 'complete') {}
               },
               child: Container(
                 width: 100,
