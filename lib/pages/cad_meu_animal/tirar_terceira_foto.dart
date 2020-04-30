@@ -7,21 +7,25 @@ import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
 
 import 'package:petsaojoao/pages/cad_meu_animal/tela_confirmacao.dart';
-import 'package:petsaojoao/pages/cad_meu_animal/fim_cad_meu_animal.dart';
+import 'package:petsaojoao/components/comp_cad_meu_animal/fotos_info.dart';
 
 class TirarTerceiraFoto extends StatefulWidget {
   final CameraDescription camera;
+  final String image1;
+  final String image2;
 
   const TirarTerceiraFoto({
     Key key,
     @required this.camera,
+    @required this.image1,
+    @required this.image2,
   }) : super(key: key);
 
   @override
-  TakePictureScreenState createState() => TakePictureScreenState();
+  TirarTerceiraFotoState createState() => TirarTerceiraFotoState();
 }
 
-class TakePictureScreenState extends State<TirarTerceiraFoto> {
+class TirarTerceiraFotoState extends State<TirarTerceiraFoto> {
   CameraController _controller;
   Future<void> _initializeControllerFuture;
 
@@ -30,11 +34,15 @@ class TakePictureScreenState extends State<TirarTerceiraFoto> {
     super.initState();
     _controller = CameraController(
       widget.camera,
-      ResolutionPreset.high,
+      ResolutionPreset.medium,
     );
 
     _initializeControllerFuture = _controller.initialize();
   }
+
+  @override
+  // TODO: implement widget
+  TirarTerceiraFoto get widget => super.widget;
 
   @override
   void dispose() {
@@ -44,28 +52,42 @@ class TakePictureScreenState extends State<TirarTerceiraFoto> {
 
   @override
   Widget build(BuildContext context) {
+    String imagem1 = widget.image1;
+    String imagem2 = widget.image2;
     return Scaffold(
-      appBar: AppBar(title: Text('Take a picture')),
       body: FutureBuilder<void>(
         future: _initializeControllerFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            return CameraPreview(_controller);
+            return ListView(
+              children: <Widget>[
+                Container(
+                    height: MediaQuery.of(context).size.height / 1.5,
+                    child: CameraPreview(_controller)),
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(height: 200, child: Image.file(File(imagem1))),
+                      Container(height: 200, child: Image.file(File(imagem2)))
+                    ],
+                  ),
+                )
+              ],
+            );
           } else {
             return Center(child: CircularProgressIndicator());
           }
         },
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.camera_alt),
+        child: Icon(Icons.arrow_forward),
         onPressed: () async {
           try {
             await _initializeControllerFuture;
 
-            final path = join(
-              (await getTemporaryDirectory()).path,
-              'PET-img3.png',
-            );
+            final path =
+                join((await getTemporaryDirectory()).path, 'PET-img3.png');
 
             if (File(path).existsSync()) {
               File(path).deleteSync(recursive: true);
@@ -74,12 +96,17 @@ class TakePictureScreenState extends State<TirarTerceiraFoto> {
 
             await _controller.takePicture(path);
 
+            final imagem1 = await getPrimeiraFoto();
+            final imagem2 = await getSegundaFoto();
+            final imagem3 = await getTerceiraFoto();
+
             Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) => TelaConfirmacao(
-                  imagePath: path,
-                  nextPage: FimCadAnimal(),
+                  image1: imagem1,
+                  image2: imagem2,
+                  image3: imagem3,
                 ),
               ),
             );
@@ -88,6 +115,7 @@ class TakePictureScreenState extends State<TirarTerceiraFoto> {
           }
         },
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
