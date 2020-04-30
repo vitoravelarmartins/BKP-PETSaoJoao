@@ -10,12 +10,12 @@ import 'package:petsaojoao/pages/cad_tutor/info_contato.dart';
 
 import 'package:masked_text/masked_text.dart';
 
-class Info_endereco extends StatefulWidget {
+class InfoEndereco extends StatefulWidget {
   @override
-  _Info_enderecoState createState() => _Info_enderecoState();
+  _InfoEnderecoState createState() => _InfoEnderecoState();
 }
 
-class _Info_enderecoState extends State<Info_endereco> {
+class _InfoEnderecoState extends State<InfoEndereco> {
   TextEditingController _searchCepController = TextEditingController();
   TextEditingController _logradouroController = TextEditingController();
   TextEditingController _bairroController = TextEditingController();
@@ -45,7 +45,7 @@ class _Info_enderecoState extends State<Info_endereco> {
 
     if (erroCep == false && numeroCasa == true) {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => Info_contato()));
+          context, MaterialPageRoute(builder: (context) => InfoContato()));
     }
   }
 

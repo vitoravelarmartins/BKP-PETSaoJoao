@@ -4,18 +4,18 @@ import 'package:petsaojoao/components/comp_cad_tutor/alert.dart';
 import 'package:petsaojoao/components/comp_cad_tutor/sizebox.dart';
 import 'package:petsaojoao/components/comp_cad_tutor/text_label.dart';
 import 'package:petsaojoao/components/comp_cad_tutor/textfield.dart';
-import 'package:petsaojoao/pages/cad_tutor/fim_cad_tuto.dart';
+import 'package:petsaojoao/pages/cad_tutor/fim_cad_tutor.dart';
 
 TextEditingController _emailController = new TextEditingController();
 TextEditingController _telefoneController = new TextEditingController();
 TextEditingController _whatsController = new TextEditingController();
 
-class Info_contato extends StatefulWidget {
+class InfoContato extends StatefulWidget {
   @override
-  _Info_contatoState createState() => _Info_contatoState();
+  _InfoContatoState createState() => _InfoContatoState();
 }
 
-class _Info_contatoState extends State<Info_contato> {
+class _InfoContatoState extends State<InfoContato> {
   bool erroEmail = false;
   bool erroTel = false;
   bool erroWhats = false;
@@ -27,8 +27,8 @@ class _Info_contatoState extends State<Info_contato> {
     var erroEmail = erro;
 
     if (erroEmail == false && numeroCasa == true) {
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => Fim_cadastro_tutor()));
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => FimCadastroTutor()));
       print("Entrei aqui");
     }
   }

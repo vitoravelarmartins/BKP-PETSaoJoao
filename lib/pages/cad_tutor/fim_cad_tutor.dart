@@ -9,12 +9,12 @@ import 'package:petsaojoao/pages/dashboard/dashboard.dart';
 import 'package:progress_indicators/progress_indicators.dart';
 import 'package:petsaojoao/pages/dashboard/dashboard.dart';
 
-class Fim_cadastro_tutor extends StatefulWidget {
+class FimCadastroTutor extends StatefulWidget {
   @override
-  _Fim_cadastro_tutorState createState() => _Fim_cadastro_tutorState();
+  _FimCadastroTutorState createState() => _FimCadastroTutorState();
 }
 
-class _Fim_cadastro_tutorState extends State<Fim_cadastro_tutor> {
+class _FimCadastroTutorState extends State<FimCadastroTutor> {
   void navigationToNextPage() {
     //Navigator.push(context, _createRoute());
     Navigator.pushReplacement(context, _createRoute());
@@ -52,11 +52,12 @@ class _Fim_cadastro_tutorState extends State<Fim_cadastro_tutor> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 40,
+                    fontSize: 35,
                   ),
                 ),
               ),
             ),
+            sizebox(20.0),
             Center(
               child: CollectionSlideTransition(
                 children: <Widget>[
