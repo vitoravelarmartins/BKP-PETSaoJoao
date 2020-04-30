@@ -27,7 +27,7 @@ class dashboard extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => cadastro_tutor()),
+                    MaterialPageRoute(builder: (context) => cadastroTutor()),
                   );
                 },
                 child: Text("Ir Para Cadastro de Tutor")),
@@ -40,17 +40,16 @@ class dashboard extends StatelessWidget {
                         builder: (context) => cadastro_animal_encontrado()),
                   );
                 },
-                child: Text("Cadastro Animal Encontrado ")),
+                child: Text("Cadastro Animal Econntrado ")),
             FlatButton(
                 color: Colors.green,
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => CadastroAnimal()),
+                    MaterialPageRoute(builder: (context) => CadastroAnimal()),
                   );
                 },
-                child: Text("Cadastro Animal Encontrado ")),
+                child: Text("Cadastro  Meu Animal  ")),
           ]),
         ),
       ),

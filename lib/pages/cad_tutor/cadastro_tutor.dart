@@ -1,7 +1,6 @@
 //Acompanhe desing do projeto aqui --> https://www.figma.com/file/GYFrt79mzIbOUXXmFyDgwL/Material-Baseline-Design-Kit?node-id=38%3A5814
 
 import 'dart:async';
-import 'package:flutter/services.dart';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -9,12 +8,12 @@ import 'package:petsaojoao/components/comp_cad_tutor/sizebox.dart';
 import 'package:petsaojoao/pages/cad_tutor/info_pessoal.dart';
 import 'package:progress_indicators/progress_indicators.dart';
 
-class cadastro_tutor extends StatefulWidget {
+class cadastroTutor extends StatefulWidget {
   @override
-  _cadastro_tutorState createState() => _cadastro_tutorState();
+  _cadastroTutorState createState() => _cadastroTutorState();
 }
 
-class _cadastro_tutorState extends State<cadastro_tutor> {
+class _cadastroTutorState extends State<cadastroTutor> {
   void navigationToNextPage() {
     //Navigator.push(context, _createRoute());
     Navigator.pushReplacement(context, _createRoute());
@@ -52,11 +51,12 @@ class _cadastro_tutorState extends State<cadastro_tutor> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 40,
+                    fontSize: 35,
                   ),
                 ),
               ),
             ),
+            sizebox(20.0),
             Center(
               child: CollectionSlideTransition(
                 children: <Widget>[
@@ -110,7 +110,7 @@ class _cadastro_tutorState extends State<cadastro_tutor> {
 
 Route _createRoute() {
   return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => Info_pessoal(),
+    pageBuilder: (context, animation, secondaryAnimation) => InfoPessoal(),
     transitionDuration: const Duration(milliseconds: 1800),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       var begin = Offset(0.0, 1.0);

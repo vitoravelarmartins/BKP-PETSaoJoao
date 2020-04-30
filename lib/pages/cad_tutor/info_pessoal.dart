@@ -13,12 +13,12 @@ TextEditingController _nameController = new TextEditingController();
 TextEditingController _rgcontroller = new TextEditingController();
 TextEditingController _cpfcontroller = new TextEditingController();
 
-class Info_pessoal extends StatefulWidget {
+class InfoPessoal extends StatefulWidget {
   @override
-  _Info_pessoalState createState() => _Info_pessoalState();
+  _InfoPessoalState createState() => _InfoPessoalState();
 }
 
-class _Info_pessoalState extends State<Info_pessoal> {
+class _InfoPessoalState extends State<InfoPessoal> {
   bool erroCPF = false;
   bool erroRG = false;
   bool erroNome = false;
@@ -44,7 +44,7 @@ class _Info_pessoalState extends State<Info_pessoal> {
     if (valNome == true && valRg == true && valCPF == true) {
       print("Todos os Dados Passaram!!!");
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => Info_endereco()));
+          context, MaterialPageRoute(builder: (context) => InfoEndereco()));
     }
   }
 
@@ -254,7 +254,7 @@ class _Info_pessoalState extends State<Info_pessoal> {
 
 Route dashboard() {
   return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => Info_pessoal(),
+    pageBuilder: (context, animation, secondaryAnimation) => InfoPessoal(),
     transitionDuration: const Duration(milliseconds: 500),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       var begin = Offset(0.0, 1.0);
