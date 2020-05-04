@@ -7,6 +7,7 @@ import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
 
 import 'package:petsaojoao/components/comp_cad_meu_animal/camera_info.dart';
+import 'package:petsaojoao/pages/cad_meu_animal/tirar_segunda_foto.dart';
 import 'package:petsaojoao/pages/cad_meu_animal/tela_confirmacao.dart';
 import 'package:petsaojoao/pages/cad_meu_animal/instrucao_outras_fotos.dart';
 
@@ -31,7 +32,7 @@ class TirarPrimeiraFotoState extends State<TirarPrimeiraFoto> {
     super.initState();
     _controller = CameraController(
       widget.camera,
-      ResolutionPreset.high,
+      ResolutionPreset.medium,
     );
 
     _initializeControllerFuture = _controller.initialize();
@@ -46,12 +47,13 @@ class TirarPrimeiraFotoState extends State<TirarPrimeiraFoto> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Take a picture')),
       body: FutureBuilder<void>(
         future: _initializeControllerFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            return CameraPreview(_controller);
+            return Container(
+                height: MediaQuery.of(context).size.height / 1.5,
+                child: CameraPreview(_controller));
           } else {
             return Center(child: CircularProgressIndicator());
           }
@@ -71,13 +73,13 @@ class TirarPrimeiraFotoState extends State<TirarPrimeiraFoto> {
               PaintingBinding.instance.imageCache.clear();
             }
 
+            final camera = await getCameraInfo();
             await _controller.takePicture(path);
 
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => TelaConfirmacao(
-                    imagePath: path, nextPage: InstrucaoOutrasFoto()),
+                builder: (context) => TirarSegundaFoto(camera: camera, image1: path),
               ),
             );
           } catch (e) {
@@ -85,6 +87,7 @@ class TirarPrimeiraFotoState extends State<TirarPrimeiraFoto> {
           }
         },
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

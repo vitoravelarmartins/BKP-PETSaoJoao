@@ -40,7 +40,6 @@ class InstrucaoOutrasFoto extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => TirarSegundaFoto(
-                      camera: camera,
                     ),
                   ),
                 );
