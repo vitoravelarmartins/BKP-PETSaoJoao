@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:petsaojoao/components/comp_cad_tutor/alert.dart';
-import 'package:petsaojoao/components/comp_cad_tutor/sizebox.dart';
 import 'package:petsaojoao/components/comp_cad_tutor/text_label.dart';
 import 'package:petsaojoao/components/comp_cad_tutor/textfield.dart';
+import 'package:petsaojoao/components/comp_publico/alert.dart';
+import 'package:petsaojoao/components/comp_publico/button.dart';
+import 'package:petsaojoao/components/comp_publico/sizebox.dart';
 import 'package:petsaojoao/pages/cad_tutor/fim_cad_tutor.dart';
 
 TextEditingController _emailController = new TextEditingController();
@@ -29,7 +30,6 @@ class _InfoContatoState extends State<InfoContato> {
     if (erroEmail == false && numeroCasa == true) {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => FimCadastroTutor()));
-      print("Entrei aqui");
     }
   }
 
@@ -40,8 +40,7 @@ class _InfoContatoState extends State<InfoContato> {
       setState(() {
         erroTel = true;
       });
-      print("passando");
-      alertaCEP(context, "Número Inválido",
+      alertaErro(context, Icons.phone, "Número Inválido",
           "Por favor, digite um  número de Telefone válido,");
       return false;
     } else {
@@ -59,8 +58,8 @@ class _InfoContatoState extends State<InfoContato> {
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
     RegExp regExp = new RegExp(pattern);
     if (!regExp.hasMatch(text)) {
-      alertaEmail(
-          context, "Email inválido", "Por favor, digite um E-mail valido.");
+      alertaErro(context, Icons.email, "Email inválido",
+          "Por favor, digite um E-mail valido.");
       setState(() {
         erroEmail = true;
       });
@@ -119,7 +118,7 @@ class _InfoContatoState extends State<InfoContato> {
           ),
         ),
         sizebox(10.0),
-        info_dados(),
+        info_dados(context),
         sizebox(20.0),
         textFieldEmail(validaEmail, true, null, _emailController, erroEmail,
             "Email", "Opcional"),
@@ -130,17 +129,11 @@ class _InfoContatoState extends State<InfoContato> {
         textFieldWhatsapp("(xx) x xxxx-xxxx", 16, _whatsController, erroWhats,
             "WhatsApp", "Opcional"),
         sizebox(40.0),
-        Container(
-            padding: EdgeInsets.only(
-              right: 15,
-            ),
-            alignment: Alignment.bottomRight,
-            child: FloatingActionButton(
-              onPressed: () {
-                validaForm(_telefoneController.text, erroEmail);
-              },
-              child: Icon(Icons.keyboard_arrow_right),
-            )),
+        buttonConfirmForm(
+          () {
+            validaForm(_telefoneController.text, erroEmail);
+          },
+        ),
         sizebox(20.0),
       ]),
     );

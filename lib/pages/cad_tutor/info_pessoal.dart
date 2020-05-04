@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:petsaojoao/components/comp_cad_tutor/text_label.dart';
-import 'package:petsaojoao/components/comp_cad_tutor/sizebox.dart';
-import 'package:masked_text/masked_text.dart';
 import 'package:cpfcnpj/cpfcnpj.dart';
+import 'package:petsaojoao/components/comp_publico/alert.dart';
+import 'package:petsaojoao/components/comp_publico/button.dart';
+import 'package:petsaojoao/components/comp_publico/sizebox.dart';
 import 'package:petsaojoao/pages/cad_tutor/info_endereco.dart';
 import 'package:petsaojoao/components/comp_cad_tutor/textfield.dart';
-import 'package:petsaojoao/components/comp_cad_tutor/alert.dart';
-import 'package:petsaojoao/components/comp_cad_tutor/button.dart';
 
 TextEditingController _nameController = new TextEditingController();
 TextEditingController _rgcontroller = new TextEditingController();
@@ -58,32 +57,8 @@ class _InfoPessoalState extends State<InfoPessoal> {
       setState(() {
         erroNome = true;
         print("Nome inválido");
-        showDialog(
-            context: context,
-            builder: (_) => AlertDialog(
-                  title: Center(
-                      child: Column(children: [
-                    Icon(
-                      Icons.person,
-                      size: 30,
-                      color: Colors.red[900],
-                    ),
-                    Text("Nome Inválido"),
-                  ])),
-                  content: Text(
-                    "Digite seu nome completo, como esta no RG - Ex.: José Pereira da Silva",
-                    style: TextStyle(color: Colors.black54),
-                  ),
-                  actions: <Widget>[
-                    FlatButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: Text("ok"),
-                    ),
-                  ],
-                ),
-            barrierDismissible: true);
+        alertaErro(context, Icons.person, "Nome Inválido",
+            "Digite seu nome completo, como esta no RG - Ex.: José Pereira da Silva");
       });
       return false;
     } else {
@@ -96,7 +71,7 @@ class _InfoPessoalState extends State<InfoPessoal> {
   }
 
   void alertaRG() {
-    alertaDoc(context, "RG Inválido",
+    alertaErro(context, Icons.picture_in_picture, "RG Inválido",
         "Número de RG digitado inválido, por favor verifique os números digitados.");
   }
 
@@ -174,7 +149,7 @@ class _InfoPessoalState extends State<InfoPessoal> {
       print("CPF INVALIDO");
       setState(() {
         erroCPF = true;
-        alertaDoc(context, "CPF Inválido",
+        alertaErro(context, Icons.picture_in_picture, "CPF Inválido",
             "Número de CPF digitado inválido, por favor verifique os números digitados.");
       });
       return false;
@@ -223,7 +198,7 @@ class _InfoPessoalState extends State<InfoPessoal> {
           ),
         ),
         sizebox(10.0),
-        info_dados(),
+        info_dados(context),
         sizebox(20.0),
         textFielNome(myFocusNode.requestFocus, _nameController, erroNome,
             "Nome completo"),
@@ -234,18 +209,12 @@ class _InfoPessoalState extends State<InfoPessoal> {
         textFieldDoc(
             null, _cpfcontroller, "xxx.xxx.xxx-xx", 14, erroCPF, "CPF", null),
         sizebox(40.0),
-        Container(
-            padding: EdgeInsets.only(
-              right: 15,
-            ),
-            alignment: Alignment.bottomRight,
-            child: FloatingActionButton(
-              onPressed: () {
-                _validaForm(_nameController.text, _cpfcontroller.text,
-                    _rgcontroller.text);
-              },
-              child: Icon(Icons.keyboard_arrow_right),
-            )),
+        buttonConfirmForm(
+          () {
+            _validaForm(
+                _nameController.text, _cpfcontroller.text, _rgcontroller.text);
+          },
+        ),
         sizebox(20.0),
       ]),
     );
