@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:petsaojoao/components/comp_cad_tutor/alert.dart';
 import 'package:petsaojoao/components/comp_cad_tutor/text_label.dart';
-import 'package:petsaojoao/components/comp_cad_tutor/sizebox.dart';
 import 'package:petsaojoao/components/comp_cad_tutor/textfield.dart';
+import 'package:petsaojoao/components/comp_publico/alert.dart';
+import 'package:petsaojoao/components/comp_publico/button.dart';
+import 'package:petsaojoao/components/comp_publico/sizebox.dart';
 import 'package:petsaojoao/pages/cad_tutor/consulta_CEP/result_cep.dart';
 import 'package:petsaojoao/pages/cad_tutor/consulta_CEP/via_cep_service.dart';
-import 'package:petsaojoao/components/comp_cad_tutor/textfield.dart';
 import 'package:petsaojoao/pages/cad_tutor/info_contato.dart';
 
 import 'package:masked_text/masked_text.dart';
@@ -57,7 +57,7 @@ class _InfoEnderecoState extends State<InfoEndereco> {
         erroNumero = true;
       });
       print("passando");
-      alertaCEP(context, "Número Inválido",
+      alertaErro(context, Icons.place, "Número Inválido",
           "Por favor, digite um  número válido, caso sua residência não possua número digite numero 0.");
       return false;
     } else {
@@ -154,7 +154,7 @@ class _InfoEnderecoState extends State<InfoEndereco> {
 
   void popupCEPErro() {
     print("Cep fora São João da Boa Vista");
-    alertaCEP(context, "CEP Inválido",
+    alertaErro(context, Icons.place, "CEP Inválido",
         "Desculpe, no momento só aceitamos CEP's do município de São João da Boa Vista - SP");
   }
 
@@ -193,7 +193,7 @@ class _InfoEnderecoState extends State<InfoEndereco> {
           ),
         ),
         sizebox(10.0),
-        info_dados(),
+        info_dados(context),
         sizebox(20.0),
         textFieldCEP(_searchCep, _chamacep, _searchCepController, 8, erroCEP,
             "CEP", null, _searchCep),
@@ -234,17 +234,11 @@ class _InfoEnderecoState extends State<InfoEndereco> {
           ),
         ),
         sizebox(50.0),
-        Container(
-            padding: EdgeInsets.only(
-              right: 15,
-            ),
-            alignment: Alignment.bottomRight,
-            child: FloatingActionButton(
-              onPressed: () {
-                _validaForm(_numeroCasaController.text, erroCEP);
-              },
-              child: Icon(Icons.keyboard_arrow_right),
-            )),
+        buttonConfirmForm(
+          () {
+            _validaForm(_numeroCasaController.text, erroCEP);
+          },
+        ),
         sizebox(20.0),
       ]),
     );

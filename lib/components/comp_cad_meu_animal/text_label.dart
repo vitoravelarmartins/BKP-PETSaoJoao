@@ -36,7 +36,7 @@ Widget info_dados(context) {
                         Text("Importância dos dados "),
                       ])),
                       content: Text(
-                        "Fique tranquilo, todos os seus dados estão protegidos e so poderam ser ultilizados pela prefeitura para registro do animal",
+                        "É muito importante informar todos os dados possíveis do seu Pet para que possamos tomar todas as medidas possíveis em caso de perda.",
                         style: TextStyle(color: Colors.black54),
                       ),
                       actions: <Widget>[
@@ -65,7 +65,7 @@ Widget info_dados(context) {
                     Icons.info,
                     color: Colors.green,
                   ),
-                  Text("Seus dadados não serão divulgados"),
+                  Text("Por que precisamos desses dados?"),
                 ]),
           ))
     ]),

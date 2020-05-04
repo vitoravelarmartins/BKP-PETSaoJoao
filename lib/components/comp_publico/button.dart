@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 
-Widget confirmForm(funcao) {
+Widget buttonConfirmForm(funcao) {
   return Container(
       padding: EdgeInsets.only(
         right: 15,
       ),
       alignment: Alignment.bottomRight,
       child: FloatingActionButton(
-        onPressed: () {
-          funcao;
-        },
+        onPressed: funcao,
         child: Icon(Icons.keyboard_arrow_right),
       ));
 }
