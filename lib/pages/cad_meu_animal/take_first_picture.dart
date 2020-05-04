@@ -7,9 +7,7 @@ import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
 
 import 'package:petsaojoao/components/comp_cad_meu_animal/camera_info.dart';
-import 'package:petsaojoao/pages/cad_meu_animal/tirar_segunda_foto.dart';
-import 'package:petsaojoao/pages/cad_meu_animal/tela_confirmacao.dart';
-import 'package:petsaojoao/pages/cad_meu_animal/instrucao_outras_fotos.dart';
+import 'package:petsaojoao/pages/cad_meu_animal/take_second_picture.dart';
 
 class TirarPrimeiraFoto extends StatefulWidget {
   final CameraDescription camera;

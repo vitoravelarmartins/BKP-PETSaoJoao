@@ -6,25 +6,26 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
 
-import 'package:petsaojoao/components/comp_cad_meu_animal/fotos_info.dart';
-import 'package:petsaojoao/components/comp_cad_meu_animal/camera_info.dart';
-import 'package:petsaojoao/pages/cad_meu_animal/tirar_terceira_foto.dart';
+import 'package:petsaojoao/pages/cad_meu_animal/confirm_screen.dart';
+import 'package:petsaojoao/components/comp_cad_meu_animal/picture_info.dart';
 
-class TirarSegundaFoto extends StatefulWidget {
+class TirarTerceiraFoto extends StatefulWidget {
   final CameraDescription camera;
   final String image1;
+  final String image2;
 
-  const TirarSegundaFoto({
+  const TirarTerceiraFoto({
     Key key,
     @required this.camera,
     @required this.image1,
+    @required this.image2,
   }) : super(key: key);
 
   @override
-  TirarSegundaFotoState createState() => TirarSegundaFotoState();
+  TirarTerceiraFotoState createState() => TirarTerceiraFotoState();
 }
 
-class TirarSegundaFotoState extends State<TirarSegundaFoto> {
+class TirarTerceiraFotoState extends State<TirarTerceiraFoto> {
   CameraController _controller;
   Future<void> _initializeControllerFuture;
 
@@ -41,7 +42,7 @@ class TirarSegundaFotoState extends State<TirarSegundaFoto> {
 
   @override
   // TODO: implement widget
-  TirarSegundaFoto get widget => super.widget;
+  TirarTerceiraFoto get widget => super.widget;
 
   @override
   void dispose() {
@@ -52,6 +53,7 @@ class TirarSegundaFotoState extends State<TirarSegundaFoto> {
   @override
   Widget build(BuildContext context) {
     String imagem1 = widget.image1;
+    String imagem2 = widget.image2;
     return Scaffold(
       body: FutureBuilder<void>(
         future: _initializeControllerFuture,
@@ -62,7 +64,15 @@ class TirarSegundaFotoState extends State<TirarSegundaFoto> {
                 Container(
                     height: MediaQuery.of(context).size.height / 1.5,
                     child: CameraPreview(_controller)),
-                Container(height: 200, child: Image.file(File(imagem1)))
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(height: 200, child: Image.file(File(imagem1))),
+                      Container(height: 200, child: Image.file(File(imagem2)))
+                    ],
+                  ),
+                )
               ],
             );
           } else {
@@ -71,31 +81,32 @@ class TirarSegundaFotoState extends State<TirarSegundaFoto> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.camera_alt),
+        child: Icon(Icons.arrow_forward),
         onPressed: () async {
           try {
             await _initializeControllerFuture;
 
             final path =
-                join((await getTemporaryDirectory()).path, 'PET-img2.png');
+                join((await getTemporaryDirectory()).path, 'PET-img3.png');
 
             if (File(path).existsSync()) {
               File(path).deleteSync(recursive: true);
               PaintingBinding.instance.imageCache.clear();
             }
 
-            final camera = await getCameraInfo();
+            await _controller.takePicture(path);
+
             final imagem1 = await getPrimeiraFoto();
             final imagem2 = await getSegundaFoto();
-            await _controller.takePicture(path);
+            final imagem3 = await getTerceiraFoto();
 
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => TirarTerceiraFoto(
-                  camera: camera,
+                builder: (context) => TelaConfirmacao(
                   image1: imagem1,
                   image2: imagem2,
+                  image3: imagem3,
                 ),
               ),
             );

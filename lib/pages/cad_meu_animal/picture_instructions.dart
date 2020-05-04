@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:petsaojoao/components/comp_cad_meu_animal/camera_info.dart';
-import 'package:petsaojoao/pages/cad_meu_animal/tirar_primeira_foto.dart';
+import 'package:petsaojoao/pages/cad_meu_animal/take_first_picture.dart';
 
 class InstrucaoPrimeiraFoto extends StatelessWidget {
   @override

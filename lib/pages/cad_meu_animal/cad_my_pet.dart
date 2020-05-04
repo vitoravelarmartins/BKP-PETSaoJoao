@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:petsaojoao/components/comp_cad_meu_animal/camera_info.dart';
-import 'package:petsaojoao/pages/cad_meu_animal/tirar_segunda_foto.dart';
+import 'package:petsaojoao/pages/cad_meu_animal/picture_instructions.dart';
 
-class InstrucaoOutrasFoto extends StatelessWidget {
+class CadastroAnimal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,11 +19,11 @@ class InstrucaoOutrasFoto extends StatelessWidget {
               child: Container(
                 width: 350,
                 child: Text(
-                  'Agora, sinta-se livre para tirar mais duas fotos de seu pet!',
+                  'Que tal cadastrar seu pet?',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 25,
+                    fontSize: 40,
                   ),
                 ),
               ),
@@ -35,12 +34,10 @@ class InstrucaoOutrasFoto extends StatelessWidget {
               disabledColor: Colors.green,
               disabledTextColor: Colors.grey,
               onPressed: () async {
-                final camera = await getCameraInfo();
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => TirarSegundaFoto(
-                    ),
+                    builder: (context) => InstrucaoPrimeiraFoto(),
                   ),
                 );
               },
@@ -48,10 +45,9 @@ class InstrucaoOutrasFoto extends StatelessWidget {
                 width: 100,
                 height: 50,
                 alignment: Alignment.center,
-                child: (Text('Certo!')),
+                child: (Text('Vamos Lá!')),
               ),
             ),
-            Container(child: Image.asset('assets/background/inferior.png')),
           ],
         ),
       ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:petsaojoao/pages/cad_meu_animal/instrucao_primeira_foto.dart';
+import 'package:petsaojoao/components/comp_cad_meu_animal/picture_upload_firebase.dart';
 
-class CadastroAnimal extends StatelessWidget {
+class FimCadAnimal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,7 +19,7 @@ class CadastroAnimal extends StatelessWidget {
               child: Container(
                 width: 350,
                 child: Text(
-                  'Que tal cadastrar seu pet?',
+                  'Finalizar Cadastro?',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
@@ -34,20 +34,17 @@ class CadastroAnimal extends StatelessWidget {
               disabledColor: Colors.green,
               disabledTextColor: Colors.grey,
               onPressed: () async {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => InstrucaoPrimeiraFoto(),
-                  ),
-                );
+                final resposta = await sendToServer();
+                if (resposta == 'complete') {}
               },
               child: Container(
                 width: 100,
                 height: 50,
                 alignment: Alignment.center,
-                child: (Text('Vamos Lá!')),
+                child: (Text('Enviar')),
               ),
             ),
+            Container(child: Image.asset('assets/background/inferior.png')),
           ],
         ),
       ),
