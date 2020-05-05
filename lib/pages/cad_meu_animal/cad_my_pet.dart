@@ -1,16 +1,4 @@
-//Acompanhe desing do projeto aqui --> https://www.figma.com/file/GYFrt79mzIbOUXXmFyDgwL/Material-Baseline-Design-Kit?node-id=38%3A5814
-
-import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:petsaojoao/components/comp_publico/sizebox.dart';
-import 'package:progress_indicators/progress_indicators.dart';
-import 'info_meu_animal.dart';
-
-class CadastroAnimal extends StatefulWidget {
-  @override
-  _CadastroAnimalState createState() => _CadastroAnimalState();
-}
 
 import 'package:petsaojoao/pages/cad_meu_animal/picture_instructions.dart';
 
@@ -41,6 +29,7 @@ class RegMyPet extends StatelessWidget {
                 ),
               ),
             ),
+<<<<<<< HEAD:lib/pages/cad_meu_animal/cad_my_pet.dart
             FlatButton(
               color: Colors.lightGreenAccent,
               textColor: Colors.black,
@@ -51,6 +40,21 @@ class RegMyPet extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => PicInstructions(),
+=======
+            sizebox(20.0),
+            Center(
+              child: CollectionSlideTransition(
+                children: <Widget>[
+                  Transform.rotate(
+                    angle: -80,
+                    child: GlowingProgressIndicator(
+                      duration: Duration(milliseconds: 550),
+                      child: Icon(
+                        FontAwesomeIcons.paw,
+                        color: Colors.white,
+                      ),
+                    ),
+>>>>>>> CorrigindoNomeDasClasses:lib/pages/cad_meu_animal/cad_meu_animal.dart
                   ),
                   SizedBox(
                     width: 10,
