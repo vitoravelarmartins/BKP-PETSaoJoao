@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:petsaojoao/pages/splash_screen/splashScreen.dart';
-//import 'package:petsaojoao/pages/cadTutorForm/tutorForm.dart';
+import 'package:petsaojoao/screens/splash_screen/splashScreen.dart';
+//import 'package:petsaojoao/screens/cadTutorForm/tutorForm.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowMaterialGrid: false,
       theme: ThemeData(
           primaryColor: Colors.blueAccent[200], primarySwatch: Colors.blue),
-      home: splash_screen(),
+      home: splashScreen(),
     );
   }
 }

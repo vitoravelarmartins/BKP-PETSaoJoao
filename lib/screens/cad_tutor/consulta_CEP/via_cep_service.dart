@@ -1,5 +1,5 @@
 import 'package:http/http.dart' as http;
-import 'package:petsaojoao/pages/cad_tutor/consulta_CEP/result_cep.dart';
+import 'package:petsaojoao/screens/cad_tutor/consulta_CEP/result_cep.dart';
 
 class ViaCepService {
   static Future<ResultCep> fetchCep({String cep}) async {

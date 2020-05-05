@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:petsaojoao/pages/login/login.dart';
+import 'package:petsaojoao/screens/login/login.dart';
 
 //Acompanhe desing do projeto aqui --> https://www.figma.com/file/GYFrt79mzIbOUXXmFyDgwL/Material-Baseline-Design-Kit?node-id=38%3A5814
 
-class splash_screen extends StatelessWidget {
+class splashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
