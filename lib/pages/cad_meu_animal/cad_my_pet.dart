@@ -29,7 +29,6 @@ class RegMyPet extends StatelessWidget {
                 ),
               ),
             ),
-<<<<<<< HEAD:lib/pages/cad_meu_animal/cad_my_pet.dart
             FlatButton(
               color: Colors.lightGreenAccent,
               textColor: Colors.black,
@@ -40,21 +39,6 @@ class RegMyPet extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => PicInstructions(),
-=======
-            sizebox(20.0),
-            Center(
-              child: CollectionSlideTransition(
-                children: <Widget>[
-                  Transform.rotate(
-                    angle: -80,
-                    child: GlowingProgressIndicator(
-                      duration: Duration(milliseconds: 550),
-                      child: Icon(
-                        FontAwesomeIcons.paw,
-                        color: Colors.white,
-                      ),
-                    ),
->>>>>>> CorrigindoNomeDasClasses:lib/pages/cad_meu_animal/cad_meu_animal.dart
                   ),
                   SizedBox(
                     width: 10,
