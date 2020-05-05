@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
 
-import 'package:petsaojoao/pages/cad_meu_animal/confirm_screen.dart';
+import 'package:petsaojoao/screens/cad_meu_animal/confirm_screen.dart';
 import 'package:petsaojoao/components/my_pet/picture_info.dart';
 
 class TakeThirdPic extends StatefulWidget {

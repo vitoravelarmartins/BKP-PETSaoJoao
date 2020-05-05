@@ -7,7 +7,7 @@ import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
 
 import 'package:petsaojoao/components/my_pet/camera_info.dart';
-import 'package:petsaojoao/pages/cad_meu_animal/take_second_picture.dart';
+import 'package:petsaojoao/screens/cad_meu_animal/take_second_picture.dart';
 
 class TakeFirstPic extends StatefulWidget {
   final CameraDescription camera;

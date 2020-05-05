@@ -5,7 +5,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:petsaojoao/components/comp_publico/sizebox.dart';
-import 'package:petsaojoao/pages/cad_tutor/info_pessoal.dart';
+import 'package:petsaojoao/screens/cad_tutor/info_pessoal.dart';
 import 'package:progress_indicators/progress_indicators.dart';
 
 class cadastroTutor extends StatefulWidget {
