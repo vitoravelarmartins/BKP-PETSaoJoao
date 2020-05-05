@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:petsaojoao/components/my_pet/camera_info.dart';
+import 'package:petsaojoao/components/comp_reg_my_pet/camera_info.dart';
 import 'package:petsaojoao/screens/reg_my_pet/take_first_picture.dart';
 
 class PicInstructions extends StatelessWidget {

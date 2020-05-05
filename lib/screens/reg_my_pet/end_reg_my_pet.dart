@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:petsaojoao/components/my_pet/picture_upload_firebase.dart';
+import 'package:petsaojoao/components/comp_reg_my_pet/picture_upload_firebase.dart';
 
-class FimCadAnimal extends StatelessWidget {
+class EndCadAnimal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

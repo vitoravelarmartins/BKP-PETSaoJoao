@@ -1,16 +1,43 @@
+//Acompanhe desing do projeto aqui --> https://www.figma.com/file/GYFrt79mzIbOUXXmFyDgwL/Material-Baseline-Design-Kit?node-id=38%3A5814
+
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:petsaojoao/components/comp_publico/sizebox.dart';
+import 'package:progress_indicators/progress_indicators.dart';
+import 'my_pet_info_screen1.dart';
 
-import 'package:petsaojoao/screens/reg_my_pet/picture_instructions.dart';
+class RegPet extends StatefulWidget {
+  @override
+  _RegPetState createState() => _RegPetState();
+}
 
-class RegMyPet extends StatelessWidget {
+class _RegPetState extends State<RegPet> {
+  void navigationToNextPage() {
+    //Navigator.push(context, _createRoute());
+    Navigator.pushReplacement(context, _createRoute());
+  }
+
+  startCadTutorTimer() async {
+    var _duration = new Duration(seconds: 5);
+    return new Timer(_duration, navigationToNextPage);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    startCadTutorTimer();
+  }
+
   @override
   Widget build(BuildContext context) {
+    //SystemChrome.setEnabledSystemUIOverlays([]);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.blueAccent[200],
-        body: ListView(
-          children: <Widget>[
+          backgroundColor: Colors.blueAccent[200],
+          body: ListView(children: <Widget>[
             Container(child: Image.asset('assets/background/superior.png')),
             SizedBox(
               height: 100,
@@ -19,38 +46,82 @@ class RegMyPet extends StatelessWidget {
               child: Container(
                 width: 350,
                 child: Text(
-                  'Que tal cadastrar seu pet?',
+                  'Vamos Cadastrar seu Pet',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 40,
+                    fontSize: 35,
                   ),
                 ),
               ),
             ),
-            FlatButton(
-              color: Colors.lightGreenAccent,
-              textColor: Colors.black,
-              disabledColor: Colors.green,
-              disabledTextColor: Colors.grey,
-              onPressed: () async {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => PicInstructions(),
+            sizebox(20.0),
+            Center(
+              child: CollectionSlideTransition(
+                children: <Widget>[
+                  Transform.rotate(
+                    angle: -80,
+                    child: GlowingProgressIndicator(
+                      duration: Duration(milliseconds: 550),
+                      child: Icon(
+                        FontAwesomeIcons.paw,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
-                );
-              },
-              child: Container(
-                width: 100,
-                height: 50,
-                alignment: Alignment.center,
-                child: (Text('Vamos Lá!')),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Transform.rotate(
+                    angle: -80,
+                    child: GlowingProgressIndicator(
+                      duration: Duration(milliseconds: 1000),
+                      child: Icon(
+                        FontAwesomeIcons.paw,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Transform.rotate(
+                    angle: -80,
+                    child: GlowingProgressIndicator(
+                      duration: Duration(milliseconds: 1550),
+                      child: Icon(
+                        FontAwesomeIcons.paw,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
-      ),
+            SizedBox(
+              height: 100,
+            ),
+            Container(child: Image.asset('assets/background/inferior.png')),
+          ])),
     );
   }
+}
+
+Route _createRoute() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => RegMyPet(),
+    transitionDuration: const Duration(milliseconds: 1800),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      var begin = Offset(0.0, 1.0);
+      var end = Offset.zero;
+      var curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
 }

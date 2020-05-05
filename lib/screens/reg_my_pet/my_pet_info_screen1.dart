@@ -7,7 +7,7 @@ import 'package:petsaojoao/components/comp_publico/alert.dart';
 import 'package:petsaojoao/components/comp_publico/button.dart';
 import 'package:petsaojoao/components/comp_publico/sizebox.dart';
 
-import 'info_meu_animal_dois.dart';
+import 'my_pet_info_screen2.dart';
 
 TextEditingController _namePetController = new TextEditingController();
 TextEditingController _especieController = new TextEditingController();
