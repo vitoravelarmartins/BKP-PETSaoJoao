@@ -62,7 +62,25 @@ class _TakeSecondPicState extends State<TakeSecondPic> {
                 Container(
                     height: MediaQuery.of(context).size.height / 1.5,
                     child: CameraPreview(_controller)),
-                Container(height: 200, child: Image.file(File(image1)))
+                Container(
+                  padding: EdgeInsets.all(20),
+                  child: Text('1 de 3 fotos registradas'),
+                ),
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        height: 120,
+                        child: Image.file(File(image1)),
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(
+                  color: Colors.black,
+                  thickness: 1.5,
+                )
               ],
             );
           } else {
