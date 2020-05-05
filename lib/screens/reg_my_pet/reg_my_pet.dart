@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:petsaojoao/pages/cad_meu_animal/picture_instructions.dart';
+import 'package:petsaojoao/screens/reg_my_pet/picture_instructions.dart';
 
 class RegMyPet extends StatelessWidget {
   @override

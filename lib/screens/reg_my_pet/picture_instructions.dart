@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:petsaojoao/components/my_pet/camera_info.dart';
-import 'package:petsaojoao/pages/cad_meu_animal/take_first_picture.dart';
+import 'package:petsaojoao/screens/reg_my_pet/take_first_picture.dart';
 
 class PicInstructions extends StatelessWidget {
   @override
@@ -12,7 +12,8 @@ class PicInstructions extends StatelessWidget {
         backgroundColor: Colors.blueAccent[200],
         body: ListView(
           children: <Widget>[
-            Container(child: Image.asset('assets/cad_animal/cachorro_lateral.png')),
+            Container(
+                child: Image.asset('assets/cad_animal/cachorro_lateral.png')),
             SizedBox(
               height: 100,
             ),

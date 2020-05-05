@@ -6,25 +6,26 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
 
+import 'package:petsaojoao/screens/reg_my_pet/confirm_screen.dart';
 import 'package:petsaojoao/components/my_pet/picture_info.dart';
-import 'package:petsaojoao/components/my_pet/camera_info.dart';
-import 'package:petsaojoao/pages/cad_meu_animal/take_third_picture.dart';
 
-class TakeSecondPic extends StatefulWidget {
+class TakeThirdPic extends StatefulWidget {
   final CameraDescription camera;
   final String image1;
+  final String image2;
 
-  const TakeSecondPic({
+  const TakeThirdPic({
     Key key,
     @required this.camera,
     @required this.image1,
+    @required this.image2,
   }) : super(key: key);
 
   @override
-  _TakeSecondPicState createState() => _TakeSecondPicState();
+  _TakeThirdPicState createState() => _TakeThirdPicState();
 }
 
-class _TakeSecondPicState extends State<TakeSecondPic> {
+class _TakeThirdPicState extends State<TakeThirdPic> {
   CameraController _controller;
   Future<void> _initializeControllerFuture;
 
@@ -41,7 +42,7 @@ class _TakeSecondPicState extends State<TakeSecondPic> {
 
   @override
   // TODO: implement widget
-  TakeSecondPic get widget => super.widget;
+  TakeThirdPic get widget => super.widget;
 
   @override
   void dispose() {
@@ -52,6 +53,7 @@ class _TakeSecondPicState extends State<TakeSecondPic> {
   @override
   Widget build(BuildContext context) {
     String image1 = widget.image1;
+    String image2 = widget.image2;
     return Scaffold(
       body: FutureBuilder<void>(
         future: _initializeControllerFuture,
@@ -62,7 +64,15 @@ class _TakeSecondPicState extends State<TakeSecondPic> {
                 Container(
                     height: MediaQuery.of(context).size.height / 1.5,
                     child: CameraPreview(_controller)),
-                Container(height: 200, child: Image.file(File(image1)))
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(height: 200, child: Image.file(File(image1))),
+                      Container(height: 200, child: Image.file(File(image2)))
+                    ],
+                  ),
+                )
               ],
             );
           } else {
@@ -71,31 +81,32 @@ class _TakeSecondPicState extends State<TakeSecondPic> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.camera_alt),
+        child: Icon(Icons.arrow_forward),
         onPressed: () async {
           try {
             await _initializeControllerFuture;
 
             final path =
-                join((await getTemporaryDirectory()).path, 'PET-img2.png');
+                join((await getTemporaryDirectory()).path, 'PET-img3.png');
 
             if (File(path).existsSync()) {
               File(path).deleteSync(recursive: true);
               PaintingBinding.instance.imageCache.clear();
             }
 
-            final camera = await getCameraInfo();
+            await _controller.takePicture(path);
+
             final image1 = await getFirstPic();
             final image2 = await getSecondPic();
-            await _controller.takePicture(path);
+            final image3 = await getThirdPic();
 
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => TakeThirdPic(
-                  camera: camera,
+                builder: (context) => ConfirmScreen(
                   image1: image1,
                   image2: image2,
+                  image3: image3,
                 ),
               ),
             );

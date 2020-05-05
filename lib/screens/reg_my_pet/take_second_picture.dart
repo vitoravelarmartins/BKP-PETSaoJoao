@@ -6,22 +6,25 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
 
+import 'package:petsaojoao/components/my_pet/picture_info.dart';
 import 'package:petsaojoao/components/my_pet/camera_info.dart';
-import 'package:petsaojoao/pages/cad_meu_animal/take_second_picture.dart';
+import 'package:petsaojoao/screens/reg_my_pet/take_third_picture.dart';
 
-class TakeFirstPic extends StatefulWidget {
+class TakeSecondPic extends StatefulWidget {
   final CameraDescription camera;
+  final String image1;
 
-  const TakeFirstPic({
+  const TakeSecondPic({
     Key key,
     @required this.camera,
+    @required this.image1,
   }) : super(key: key);
 
   @override
-  _TakeFirstPicState createState() => _TakeFirstPicState();
+  _TakeSecondPicState createState() => _TakeSecondPicState();
 }
 
-class _TakeFirstPicState extends State<TakeFirstPic> {
+class _TakeSecondPicState extends State<TakeSecondPic> {
   CameraController _controller;
   Future<void> _initializeControllerFuture;
 
@@ -37,6 +40,10 @@ class _TakeFirstPicState extends State<TakeFirstPic> {
   }
 
   @override
+  // TODO: implement widget
+  TakeSecondPic get widget => super.widget;
+
+  @override
   void dispose() {
     _controller.dispose();
     super.dispose();
@@ -44,14 +51,20 @@ class _TakeFirstPicState extends State<TakeFirstPic> {
 
   @override
   Widget build(BuildContext context) {
+    String image1 = widget.image1;
     return Scaffold(
       body: FutureBuilder<void>(
         future: _initializeControllerFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            return Container(
-                height: MediaQuery.of(context).size.height / 1.5,
-                child: CameraPreview(_controller));
+            return ListView(
+              children: <Widget>[
+                Container(
+                    height: MediaQuery.of(context).size.height / 1.5,
+                    child: CameraPreview(_controller)),
+                Container(height: 200, child: Image.file(File(image1)))
+              ],
+            );
           } else {
             return Center(child: CircularProgressIndicator());
           }
@@ -64,7 +77,7 @@ class _TakeFirstPicState extends State<TakeFirstPic> {
             await _initializeControllerFuture;
 
             final path =
-                join((await getTemporaryDirectory()).path, 'PET-img1.png');
+                join((await getTemporaryDirectory()).path, 'PET-img2.png');
 
             if (File(path).existsSync()) {
               File(path).deleteSync(recursive: true);
@@ -72,12 +85,18 @@ class _TakeFirstPicState extends State<TakeFirstPic> {
             }
 
             final camera = await getCameraInfo();
+            final image1 = await getFirstPic();
+            final image2 = await getSecondPic();
             await _controller.takePicture(path);
 
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => TakeSecondPic(camera: camera, image1: path),
+                builder: (context) => TakeThirdPic(
+                  camera: camera,
+                  image1: image1,
+                  image2: image2,
+                ),
               ),
             );
           } catch (e) {
