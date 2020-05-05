@@ -49,9 +49,31 @@ class _TakeFirstPicState extends State<TakeFirstPic> {
         future: _initializeControllerFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            return Container(
-                height: MediaQuery.of(context).size.height / 1.5,
-                child: CameraPreview(_controller));
+            return ListView(
+              children: <Widget>[
+                Container(
+                    height: MediaQuery.of(context).size.height / 1.5,
+                    child: CameraPreview(_controller)),
+                Container(
+                  padding: EdgeInsets.all(20),
+                  child: Text('0 de 3 fotos registradas'),
+                ),
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        height: 120,
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(
+                  color: Colors.black,
+                  thickness: 1.5,
+                )
+              ],
+            );
           } else {
             return Center(child: CircularProgressIndicator());
           }
@@ -77,7 +99,8 @@ class _TakeFirstPicState extends State<TakeFirstPic> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => TakeSecondPic(camera: camera, image1: path),
+                builder: (context) =>
+                    TakeSecondPic(camera: camera, image1: path),
               ),
             );
           } catch (e) {
