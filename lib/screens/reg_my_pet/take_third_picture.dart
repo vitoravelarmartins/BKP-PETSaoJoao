@@ -2,12 +2,18 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:camera/camera.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
 
+<<<<<<< HEAD:lib/screens/reg_my_pet/take_third_picture.dart
 import 'package:petsaojoao/screens/reg_my_pet/confirm_screen.dart';
 import 'package:petsaojoao/components/comp_reg_my_pet/picture_info.dart';
+=======
+import 'package:petsaojoao/screens/cad_meu_animal/confirm_screen.dart';
+import 'package:petsaojoao/components/my_pet/picture_info.dart';
+>>>>>>> f8af7b1fb20d0131f7d230b62fef66564c801724:lib/screens/cad_meu_animal/take_third_picture.dart
 
 class TakeThirdPic extends StatefulWidget {
   final CameraDescription camera;
@@ -64,14 +70,29 @@ class _TakeThirdPicState extends State<TakeThirdPic> {
                 Container(
                     height: MediaQuery.of(context).size.height / 1.5,
                     child: CameraPreview(_controller)),
+                Container(
+                  padding: EdgeInsets.all(20),
+                  child: Text('2 de 3 fotos registradas'),
+                ),
                 Center(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Container(height: 200, child: Image.file(File(image1))),
-                      Container(height: 200, child: Image.file(File(image2)))
+                      Container(
+                        height: 120,
+                        padding: EdgeInsets.only(right: 20),
+                        child: Image.file(File(image1)),
+                      ),
+                      Container(
+                        height: 120,
+                        child: Image.file(File(image2)),
+                      ),
                     ],
                   ),
+                ),
+                Divider(
+                  color: Colors.black,
+                  thickness: 1.5,
                 )
               ],
             );
@@ -81,7 +102,7 @@ class _TakeThirdPicState extends State<TakeThirdPic> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.arrow_forward),
+        child: Icon(Icons.camera_alt),
         onPressed: () async {
           try {
             await _initializeControllerFuture;

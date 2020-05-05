@@ -6,8 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
 
+<<<<<<< HEAD:lib/screens/reg_my_pet/take_first_picture.dart
 import 'package:petsaojoao/components/comp_reg_my_pet/camera_info.dart';
 import 'package:petsaojoao/screens/reg_my_pet/take_second_picture.dart';
+=======
+import 'package:petsaojoao/components/my_pet/camera_info.dart';
+import 'package:petsaojoao/screens/cad_meu_animal/take_second_picture.dart';
+>>>>>>> f8af7b1fb20d0131f7d230b62fef66564c801724:lib/screens/cad_meu_animal/take_first_picture.dart
 
 class TakeFirstPic extends StatefulWidget {
   final CameraDescription camera;
@@ -49,9 +54,31 @@ class _TakeFirstPicState extends State<TakeFirstPic> {
         future: _initializeControllerFuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            return Container(
-                height: MediaQuery.of(context).size.height / 1.5,
-                child: CameraPreview(_controller));
+            return ListView(
+              children: <Widget>[
+                Container(
+                    height: MediaQuery.of(context).size.height / 1.5,
+                    child: CameraPreview(_controller)),
+                Container(
+                  padding: EdgeInsets.all(20),
+                  child: Text('0 de 3 fotos registradas'),
+                ),
+                Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        height: 120,
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(
+                  color: Colors.black,
+                  thickness: 1.5,
+                )
+              ],
+            );
           } else {
             return Center(child: CircularProgressIndicator());
           }
