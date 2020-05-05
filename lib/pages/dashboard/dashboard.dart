@@ -46,12 +46,8 @@ class dashboard extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-<<<<<<< HEAD
                     MaterialPageRoute(
                         builder: (context) => RegMyPet()),
-=======
-                    MaterialPageRoute(builder: (context) => CadastroAnimal()),
->>>>>>> d6f4794e5ff07b5b339a642d443351a5d8e10357
                   );
                 },
                 child: Text("Cadastro  Meu Animal  ")),
