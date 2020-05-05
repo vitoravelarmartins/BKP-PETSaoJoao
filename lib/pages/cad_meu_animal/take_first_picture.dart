@@ -6,22 +6,22 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
 
-import 'package:petsaojoao/components/comp_cad_meu_animal/camera_info.dart';
+import 'package:petsaojoao/components/my_pet/camera_info.dart';
 import 'package:petsaojoao/pages/cad_meu_animal/take_second_picture.dart';
 
-class TirarPrimeiraFoto extends StatefulWidget {
+class TakeFirstPic extends StatefulWidget {
   final CameraDescription camera;
 
-  const TirarPrimeiraFoto({
+  const TakeFirstPic({
     Key key,
     @required this.camera,
   }) : super(key: key);
 
   @override
-  TirarPrimeiraFotoState createState() => TirarPrimeiraFotoState();
+  _TakeFirstPicState createState() => _TakeFirstPicState();
 }
 
-class TirarPrimeiraFotoState extends State<TirarPrimeiraFoto> {
+class _TakeFirstPicState extends State<TakeFirstPic> {
   CameraController _controller;
   Future<void> _initializeControllerFuture;
 
@@ -77,7 +77,7 @@ class TirarPrimeiraFotoState extends State<TirarPrimeiraFoto> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => TirarSegundaFoto(camera: camera, image1: path),
+                builder: (context) => TakeSecondPic(camera: camera, image1: path),
               ),
             );
           } catch (e) {

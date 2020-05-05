@@ -1,38 +1,37 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:petsaojoao/components/comp_cad_meu_animal/confirmation_buttons.dart';
 
-class TelaConfirmacao extends StatefulWidget {
+class ConfirmScreen extends StatefulWidget {
   final String image1;
   final String image2;
   final String image3;
   final Widget nextPage;
 
-  TelaConfirmacao(
-      {Key key, this.image1, this.image2, this.image3, this.nextPage})
+  ConfirmScreen({Key key, this.image1, this.image2, this.image3, this.nextPage})
       : super(key: key);
 
   @override
-  _TelaConfirmacaoState createState() => _TelaConfirmacaoState();
+  _ConfirmScreenState createState() => _ConfirmScreenState();
 }
 
-class _TelaConfirmacaoState extends State<TelaConfirmacao> {
+class _ConfirmScreenState extends State<ConfirmScreen> {
   @override
   // TODO: implement widget
-  TelaConfirmacao get widget => super.widget;
+  ConfirmScreen get widget => super.widget;
 
   @override
   Widget build(BuildContext context) {
+    AssetImage showImage = AssetImage(widget.image1);
 
-    AssetImage imagemMostra = AssetImage(widget.image1);
-
-    void trocarimagem(String nextImage) {
+    void imageSwap(String nextImage) {
       print('aaaa');
-      setState(() {
-        imagemMostra = new AssetImage(nextImage);
-      });
-      print(imagemMostra);
+      setState(
+        () {
+          showImage = new AssetImage(nextImage);
+        },
+      );
+      print(showImage);
     }
 
     String image1 = widget.image1;
@@ -48,8 +47,7 @@ class _TelaConfirmacaoState extends State<TelaConfirmacao> {
               padding: EdgeInsets.all(10),
               height: MediaQuery.of(context).size.height / 1.5,
               decoration: new BoxDecoration(
-                image:
-                    new DecorationImage(image: imagemMostra, fit: BoxFit.cover),
+                image: new DecorationImage(image: showImage, fit: BoxFit.cover),
               ),
             ),
             Center(
@@ -61,7 +59,7 @@ class _TelaConfirmacaoState extends State<TelaConfirmacao> {
                     width: buttonWidth,
                     child: RaisedButton(
                       onPressed: () {
-                        trocarimagem(image1);
+                        imageSwap(image1);
                       },
                       child: Container(child: Image.file(File(image1))),
                     ),
@@ -71,7 +69,7 @@ class _TelaConfirmacaoState extends State<TelaConfirmacao> {
                     width: buttonWidth,
                     child: RaisedButton(
                       onPressed: () {
-                        trocarimagem(image2);
+                        imageSwap(image2);
                       },
                       child: Container(child: Image.file(File(image2))),
                     ),
@@ -81,7 +79,7 @@ class _TelaConfirmacaoState extends State<TelaConfirmacao> {
                     width: buttonWidth,
                     child: RaisedButton(
                       onPressed: () {
-                        trocarimagem(image3);
+                        imageSwap(image3);
                       },
                       child: Container(child: Image.file(File(image3))),
                     ),

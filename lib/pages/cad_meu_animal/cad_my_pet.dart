@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:petsaojoao/pages/cad_meu_animal/picture_instructions.dart';
 
-class CadastroAnimal extends StatelessWidget {
+class RegMyPet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -37,7 +37,7 @@ class CadastroAnimal extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => InstrucaoPrimeiraFoto(),
+                    builder: (context) => PicInstructions(),
                   ),
                 );
               },

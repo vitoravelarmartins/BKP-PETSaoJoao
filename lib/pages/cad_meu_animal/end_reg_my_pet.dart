@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:petsaojoao/components/comp_cad_meu_animal/picture_upload_firebase.dart';
+import 'package:petsaojoao/components/my_pet/picture_upload_firebase.dart';
 
 class FimCadAnimal extends StatelessWidget {
   @override

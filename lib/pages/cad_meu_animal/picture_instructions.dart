@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:petsaojoao/components/comp_cad_meu_animal/camera_info.dart';
+import 'package:petsaojoao/components/my_pet/camera_info.dart';
 import 'package:petsaojoao/pages/cad_meu_animal/take_first_picture.dart';
 
-class InstrucaoPrimeiraFoto extends StatelessWidget {
+class PicInstructions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -40,7 +40,7 @@ class InstrucaoPrimeiraFoto extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => TirarPrimeiraFoto(
+                    builder: (context) => TakeFirstPic(
                       camera: camera,
                     ),
                   ),

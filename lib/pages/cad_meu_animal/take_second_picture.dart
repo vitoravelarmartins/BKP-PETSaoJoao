@@ -6,25 +6,25 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
 
-import 'package:petsaojoao/components/comp_cad_meu_animal/picture_info.dart';
-import 'package:petsaojoao/components/comp_cad_meu_animal/camera_info.dart';
+import 'package:petsaojoao/components/my_pet/picture_info.dart';
+import 'package:petsaojoao/components/my_pet/camera_info.dart';
 import 'package:petsaojoao/pages/cad_meu_animal/take_third_picture.dart';
 
-class TirarSegundaFoto extends StatefulWidget {
+class TakeSecondPic extends StatefulWidget {
   final CameraDescription camera;
   final String image1;
 
-  const TirarSegundaFoto({
+  const TakeSecondPic({
     Key key,
     @required this.camera,
     @required this.image1,
   }) : super(key: key);
 
   @override
-  TirarSegundaFotoState createState() => TirarSegundaFotoState();
+  _TakeSecondPicState createState() => _TakeSecondPicState();
 }
 
-class TirarSegundaFotoState extends State<TirarSegundaFoto> {
+class _TakeSecondPicState extends State<TakeSecondPic> {
   CameraController _controller;
   Future<void> _initializeControllerFuture;
 
@@ -41,7 +41,7 @@ class TirarSegundaFotoState extends State<TirarSegundaFoto> {
 
   @override
   // TODO: implement widget
-  TirarSegundaFoto get widget => super.widget;
+  TakeSecondPic get widget => super.widget;
 
   @override
   void dispose() {
@@ -51,7 +51,7 @@ class TirarSegundaFotoState extends State<TirarSegundaFoto> {
 
   @override
   Widget build(BuildContext context) {
-    String imagem1 = widget.image1;
+    String image1 = widget.image1;
     return Scaffold(
       body: FutureBuilder<void>(
         future: _initializeControllerFuture,
@@ -62,7 +62,7 @@ class TirarSegundaFotoState extends State<TirarSegundaFoto> {
                 Container(
                     height: MediaQuery.of(context).size.height / 1.5,
                     child: CameraPreview(_controller)),
-                Container(height: 200, child: Image.file(File(imagem1)))
+                Container(height: 200, child: Image.file(File(image1)))
               ],
             );
           } else {
@@ -85,17 +85,17 @@ class TirarSegundaFotoState extends State<TirarSegundaFoto> {
             }
 
             final camera = await getCameraInfo();
-            final imagem1 = await getPrimeiraFoto();
-            final imagem2 = await getSegundaFoto();
+            final image1 = await getFirstPic();
+            final image2 = await getSecondPic();
             await _controller.takePicture(path);
 
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => TirarTerceiraFoto(
+                builder: (context) => TakeThirdPic(
                   camera: camera,
-                  image1: imagem1,
-                  image2: imagem2,
+                  image1: image1,
+                  image2: image2,
                 ),
               ),
             );
