@@ -5,9 +5,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:petsaojoao/components/comp_publico/sizebox.dart';
-import 'package:petsaojoao/pages/dashboard/dashboard.dart';
+import 'package:petsaojoao/screens/dashboard/dashboard.dart';
 import 'package:progress_indicators/progress_indicators.dart';
-import 'package:petsaojoao/pages/dashboard/dashboard.dart';
+import 'package:petsaojoao/screens/dashboard/dashboard.dart';
 
 class FimCadastroTutor extends StatefulWidget {
   @override

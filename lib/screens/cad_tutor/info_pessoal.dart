@@ -5,7 +5,7 @@ import 'package:cpfcnpj/cpfcnpj.dart';
 import 'package:petsaojoao/components/comp_publico/alert.dart';
 import 'package:petsaojoao/components/comp_publico/button.dart';
 import 'package:petsaojoao/components/comp_publico/sizebox.dart';
-import 'package:petsaojoao/pages/cad_tutor/info_endereco.dart';
+import 'package:petsaojoao/screens/cad_tutor/info_endereco.dart';
 import 'package:petsaojoao/components/comp_cad_tutor/textfield.dart';
 
 TextEditingController _nameController = new TextEditingController();
