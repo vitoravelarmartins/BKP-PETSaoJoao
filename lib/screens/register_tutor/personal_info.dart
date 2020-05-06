@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
-import 'package:petsaojoao/components/Reg_tutor/data_security_info.dart';
+import 'package:petsaojoao/components/register_tutor/data_security_info.dart';
 import 'package:petsaojoao/components/foundation_form/appbar_foundation.dart';
 import 'package:petsaojoao/components/foundation_form/body_foundation.dart';
 import 'package:petsaojoao/components/foundation_form/button_confirmForm.dart';
