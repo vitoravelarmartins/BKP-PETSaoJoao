@@ -3,7 +3,7 @@ import 'package:petsaojoao/screens/dashboard/dashboard.dart';
 
 //Acompanhe desing do projeto aqui --> https://www.figma.com/file/GYFrt79mzIbOUXXmFyDgwL/Material-Baseline-Design-Kit?node-id=38%3A5814
 
-class login extends StatelessWidget {
+class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

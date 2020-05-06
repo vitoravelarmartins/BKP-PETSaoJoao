@@ -7,13 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
 
-<<<<<<< HEAD:lib/screens/reg_my_pet/take_third_picture.dart
 import 'package:petsaojoao/screens/reg_my_pet/confirm_screen.dart';
 import 'package:petsaojoao/components/comp_reg_my_pet/picture_info.dart';
-=======
-import 'package:petsaojoao/screens/cad_meu_animal/confirm_screen.dart';
-import 'package:petsaojoao/components/my_pet/picture_info.dart';
->>>>>>> f8af7b1fb20d0131f7d230b62fef66564c801724:lib/screens/cad_meu_animal/take_third_picture.dart
 
 class TakeThirdPic extends StatefulWidget {
   final CameraDescription camera;

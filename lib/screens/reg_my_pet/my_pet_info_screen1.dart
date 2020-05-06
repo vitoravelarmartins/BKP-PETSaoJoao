@@ -13,12 +13,12 @@ TextEditingController _namePetController = new TextEditingController();
 TextEditingController _especieController = new TextEditingController();
 TextEditingController _sexoPetController = new TextEditingController();
 
-class InfoMeuAnimal extends StatefulWidget {
+class RegMyPet extends StatefulWidget {
   @override
-  _InfoMeuAnimalState createState() => _InfoMeuAnimalState();
+  _RegMyPetState createState() => _RegMyPetState();
 }
 
-class _InfoMeuAnimalState extends State<InfoMeuAnimal> {
+class _RegMyPetState extends State<RegMyPet> {
   bool erroNomePet = false;
   bool erroEspecie = false;
   bool erroSexoPet = false;

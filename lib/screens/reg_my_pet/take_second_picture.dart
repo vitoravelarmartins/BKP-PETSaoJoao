@@ -6,15 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
 
-<<<<<<< HEAD:lib/screens/reg_my_pet/take_second_picture.dart
 import 'package:petsaojoao/components/comp_reg_my_pet/picture_info.dart';
 import 'package:petsaojoao/components/comp_reg_my_pet/camera_info.dart';
 import 'package:petsaojoao/screens/reg_my_pet/take_third_picture.dart';
-=======
-import 'package:petsaojoao/components/my_pet/picture_info.dart';
-import 'package:petsaojoao/components/my_pet/camera_info.dart';
-import 'package:petsaojoao/screens/cad_meu_animal/take_third_picture.dart';
->>>>>>> f8af7b1fb20d0131f7d230b62fef66564c801724:lib/screens/cad_meu_animal/take_second_picture.dart
 
 class TakeSecondPic extends StatefulWidget {
   final CameraDescription camera;

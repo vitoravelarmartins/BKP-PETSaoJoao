@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
-import 'package:petsaojoao/screens/cad_tutor/cadastro_tutor.dart';
+import 'package:petsaojoao/screens/register_tutor/cadastro_tutor.dart';
 import 'package:petsaojoao/screens/reg_my_pet/reg_my_pet.dart';
 import 'package:petsaojoao/screens/animal_reg_found/animal_reg_found.dart';
 

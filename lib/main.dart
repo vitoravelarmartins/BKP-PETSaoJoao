@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowMaterialGrid: false,
       theme: ThemeData(
           primaryColor: Colors.blueAccent[200], primarySwatch: Colors.blue),
-      home: splashScreen(),
+      home: SplashScreen(),
     );
   }
 }

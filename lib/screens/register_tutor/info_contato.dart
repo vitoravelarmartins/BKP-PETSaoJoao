@@ -5,7 +5,7 @@ import 'package:petsaojoao/components/comp_cad_tutor/textfield.dart';
 import 'package:petsaojoao/components/comp_publico/alert.dart';
 import 'package:petsaojoao/components/comp_publico/button.dart';
 import 'package:petsaojoao/components/comp_publico/sizebox.dart';
-import 'package:petsaojoao/screens/cad_tutor/fim_cad_tutor.dart';
+import 'package:petsaojoao/screens/register_tutor/fim_cad_tutor.dart';
 
 TextEditingController _emailController = new TextEditingController();
 TextEditingController _telefoneController = new TextEditingController();

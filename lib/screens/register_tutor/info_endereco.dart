@@ -4,9 +4,9 @@ import 'package:petsaojoao/components/comp_cad_tutor/textfield.dart';
 import 'package:petsaojoao/components/comp_publico/alert.dart';
 import 'package:petsaojoao/components/comp_publico/button.dart';
 import 'package:petsaojoao/components/comp_publico/sizebox.dart';
-import 'package:petsaojoao/screens/cad_tutor/consulta_CEP/result_cep.dart';
-import 'package:petsaojoao/screens/cad_tutor/consulta_CEP/via_cep_service.dart';
-import 'package:petsaojoao/screens/cad_tutor/info_contato.dart';
+import 'package:petsaojoao/screens/register_tutor/consulta_CEP/result_cep.dart';
+import 'package:petsaojoao/screens/register_tutor/consulta_CEP/via_cep_service.dart';
+import 'package:petsaojoao/screens/register_tutor/info_contato.dart';
 
 import 'package:masked_text/masked_text.dart';
 

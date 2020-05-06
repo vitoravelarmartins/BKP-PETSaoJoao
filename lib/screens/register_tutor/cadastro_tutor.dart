@@ -5,7 +5,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:petsaojoao/components/comp_publico/sizebox.dart';
-import 'package:petsaojoao/screens/cad_tutor/info_pessoal.dart';
+import 'package:petsaojoao/screens/register_tutor/personal_info.dart';
 import 'package:progress_indicators/progress_indicators.dart';
 
 class cadastroTutor extends StatefulWidget {
@@ -110,7 +110,7 @@ class _cadastroTutorState extends State<cadastroTutor> {
 
 Route _createRoute() {
   return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => InfoPessoal(),
+    pageBuilder: (context, animation, secondaryAnimation) => PersonalInfo(),
     transitionDuration: const Duration(milliseconds: 1800),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       var begin = Offset(0.0, 1.0);

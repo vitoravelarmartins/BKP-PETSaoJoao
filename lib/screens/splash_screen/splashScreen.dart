@@ -3,7 +3,7 @@ import 'package:petsaojoao/screens/login/login.dart';
 
 //Acompanhe desing do projeto aqui --> https://www.figma.com/file/GYFrt79mzIbOUXXmFyDgwL/Material-Baseline-Design-Kit?node-id=38%3A5814
 
-class splashScreen extends StatelessWidget {
+class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,7 +18,7 @@ class splashScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => login()),
+                    MaterialPageRoute(builder: (context) => Login()),
                   );
                 },
                 child: Text("IR PARA PAGINA LOGIN")),
