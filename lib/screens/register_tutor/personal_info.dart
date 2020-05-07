@@ -70,10 +70,12 @@ class FormPersonal extends StatefulWidget {
 }
 
 class _FormPersonalState extends State<FormPersonal> {
+  final _personalFormkey = GlobalKey<FormState>();
+
   final _labelName = "Nome completo";
   final _labelRg = "RG";
   final _labelCpf = "CPF";
-  final _personalFormkey = GlobalKey<FormState>();
+
   FocusNode focusNameForRg;
   FocusNode foucusRgForCpf;
 
@@ -94,10 +96,6 @@ class _FormPersonalState extends State<FormPersonal> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(
-        left: 15,
-        right: 15,
-      ),
       child: Form(
           key: _personalFormkey,
           child: Column(
