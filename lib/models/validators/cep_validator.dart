@@ -1,27 +1,48 @@
-import 'package:petsaojoao/components/comp_publico/alert.dart';
+import 'package:path/path.dart';
+import 'package:petsaojoao/components/register_tutor/alert_error.dart';
 import 'package:via_cep/via_cep.dart';
 import 'package:flutter/material.dart';
 import 'package:petsaojoao/screens/register_tutor/andress_info.dart';
 
 class CepValidador {
-  var context;
-  final title = "CEP fora São João da Boa Vista";
-  final content =
-      "Desculpe, no momento só aceitamos CEP's do município de São João da Boa Vista - SP";
-  void validate(String value) async {
-    var CEP = new via_cep();
+  final citySaoJoao = "São João da Boa Vista";
 
-    var result = await CEP.searchCEP(value, 'json', '');
+  String validate(context, String value, city) {
+    const requiredField = "O campo é obrigatorio";
+    const cepInvalid = "CEP inválido";
+    if (city != citySaoJoao) {
+      return cepInvalid;
+    } else if (value.isEmpty) {
+      return requiredField;
+    } else {
+      return null;
+    }
+  }
 
-    if (CEP.getResponse() == 200) {
-      if (CEP.getLocalidade() != "São João da Boa Vista") {
-        print("CepInvalido");
+  Future searchingCep(String value, context) async {
+    final icon = Icons.place;
+    final title = "CEP Inválido";
+    final content =
+        "Desculpe, no momento só aceitamos CEP's do município de São João da Boa Vista - SP";
+    final cepNotFound = "CEP not Found";
+
+    var cep = new via_cep();
+
+    var result = await cep.searchCEP(value, 'json', '');
+
+    if (cep.getResponse() == 200) {
+      if (cep.getLocalidade() != citySaoJoao) {
+        // print("CepInvalido");
+        AlertError(icon, title, content).showAlert(context);
+        FormAndress().setAndress(null, null, cep.getLocalidade());
       } else {
-        FormAndress().setAndress(CEP.getLogradouro());
+        FormAndress().setAndress(
+            cep.getLogradouro(), cep.getBairro(), cep.getLocalidade());
       }
     } else {
-      print('Código de Retorno: ' + CEP.getResponse().toString());
-      print('Erro: ' + CEP.getBody());
+      FormAndress().setAndress(null, null, cepNotFound);
+      //print('Código de Retorno: ' + CEP.getResponse().toString());
+      //print('Erro: ' + CEP.getBody());
     }
   }
 }

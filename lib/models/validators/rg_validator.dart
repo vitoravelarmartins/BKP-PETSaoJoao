@@ -5,7 +5,7 @@ class RgValidator {
     const requiredField = "O campo é obrigatorio";
     const rgInvalid = "RG inválido";
     const okValidate = "Ok! RG Passou";
-    var namelogger = Logger(printer: PrettyPrinter());
+    var rglogger = Logger(printer: PrettyPrinter());
 
     if (value.isEmpty) {
       return requiredField;
@@ -78,7 +78,7 @@ class RgValidator {
 
         default:
           {
-            namelogger.i("$okValidate");
+            rglogger.i("$okValidate");
             return null;
           }
       }

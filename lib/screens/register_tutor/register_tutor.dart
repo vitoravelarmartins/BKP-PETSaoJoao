@@ -8,12 +8,12 @@ import 'package:petsaojoao/components/comp_publico/sizebox.dart';
 import 'package:petsaojoao/screens/register_tutor/personal_info.dart';
 import 'package:progress_indicators/progress_indicators.dart';
 
-class cadastroTutor extends StatefulWidget {
+class RegisterTutor extends StatefulWidget {
   @override
-  _cadastroTutorState createState() => _cadastroTutorState();
+  _RegisterTutorState createState() => _RegisterTutorState();
 }
 
-class _cadastroTutorState extends State<cadastroTutor> {
+class _RegisterTutorState extends State<RegisterTutor> {
   void navigationToNextPage() {
     //Navigator.push(context, _createRoute());
     Navigator.pushReplacement(context, _createRoute());
@@ -32,8 +32,6 @@ class _cadastroTutorState extends State<cadastroTutor> {
 
   @override
   Widget build(BuildContext context) {
-    //SystemChrome.setEnabledSystemUIOverlays([]);
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
