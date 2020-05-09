@@ -2,14 +2,14 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:petsaojoao/components/foundation_form/splash_screen_foundation.dart';
-import 'package:petsaojoao/screens/register_tutor/personal_info.dart';
+import 'package:petsaojoao/screens/dashboard/dashboard.dart';
 
-class RegisterTutor extends StatefulWidget {
+class EndRegisterTutor extends StatefulWidget {
   @override
-  _RegisterTutorState createState() => _RegisterTutorState();
+  _EndRegisterTutorState createState() => _EndRegisterTutorState();
 }
 
-class _RegisterTutorState extends State<RegisterTutor> {
+class _EndRegisterTutorState extends State<EndRegisterTutor> {
   void navigationToNextPage() {
     //Navigator.push(context, _createRoute());
     Navigator.pushReplacement(context, _createRoute());
@@ -28,19 +28,20 @@ class _RegisterTutorState extends State<RegisterTutor> {
 
   @override
   Widget build(BuildContext context) {
+    //SystemChrome.setEnabledSystemUIOverlays([]);
+
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: Colors.blueAccent[200],
-        body: SplahScreenFoundation("Ops, não temos seus dados ainda"),
-      ),
-    );
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+          backgroundColor: Colors.blueAccent[200],
+          body: SplahScreenFoundation("Pronto!"),
+        ));
   }
 }
 
 Route _createRoute() {
   return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => PersonalInfo(),
+    pageBuilder: (context, animation, secondaryAnimation) => dashboard(),
     transitionDuration: const Duration(milliseconds: 1800),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       var begin = Offset(0.0, 1.0);

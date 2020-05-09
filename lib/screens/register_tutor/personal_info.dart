@@ -70,7 +70,7 @@ class FormPersonal extends StatefulWidget {
 }
 
 class _FormPersonalState extends State<FormPersonal> {
-  final _personalFormkey = GlobalKey<FormState>();
+  final _personalFormKey = GlobalKey<FormState>();
 
   final _labelName = "Nome completo";
   final _labelRg = "RG";
@@ -97,7 +97,7 @@ class _FormPersonalState extends State<FormPersonal> {
   Widget build(BuildContext context) {
     return Container(
       child: Form(
-          key: _personalFormkey,
+          key: _personalFormKey,
           child: Column(
             children: <Widget>[
               TextFormField(
@@ -144,7 +144,7 @@ class _FormPersonalState extends State<FormPersonal> {
               ),
               SizedBox(height: 30),
               ButtonConfirmForm(() {
-                if (_personalFormkey.currentState.validate()) {
+                if (_personalFormKey.currentState.validate()) {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => AndressInfo()));
                 }

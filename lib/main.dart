@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:petsaojoao/screens/splash_screen/splashScreen.dart';
+import 'package:petsaojoao/screens/splash_screen/splash_screen.dart';
 //import 'package:petsaojoao/screens/cadTutorForm/tutorForm.dart';
 
 void main() => runApp(MyApp());

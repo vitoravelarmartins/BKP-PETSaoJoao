@@ -3,7 +3,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:petsaojoao/components/comp_publico/sizebox.dart';
+// import 'package:petsaojoao/components/comp_publico/sizebox.dart';
 import 'package:progress_indicators/progress_indicators.dart';
 import 'my_pet_info_screen1.dart';
 
@@ -55,7 +55,7 @@ class _RegPetState extends State<RegPet> {
                 ),
               ),
             ),
-            sizebox(20.0),
+            // sizebox(20.0),
             Center(
               child: CollectionSlideTransition(
                 children: <Widget>[

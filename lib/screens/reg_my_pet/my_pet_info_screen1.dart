@@ -3,9 +3,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:petsaojoao/components/comp_cad_meu_animal/dropdown.dart';
 import 'package:petsaojoao/components/comp_cad_meu_animal/textfield.dart';
 import 'package:petsaojoao/components/comp_cad_meu_animal/text_label.dart';
-import 'package:petsaojoao/components/comp_publico/alert.dart';
-import 'package:petsaojoao/components/comp_publico/button.dart';
-import 'package:petsaojoao/components/comp_publico/sizebox.dart';
+// import 'package:petsaojoao/components/comp_publico/alert.dart';
+// import 'package:petsaojoao/components/comp_publico/button.dart';
+// import 'package:petsaojoao/components/comp_publico/sizebox.dart';
 
 import 'my_pet_info_screen2.dart';
 
@@ -154,8 +154,8 @@ class _RegMyPetState extends State<RegMyPet> {
       setState(() {
         erroNomePet = true;
         print("Nome inválido");
-        alertaErro(context, FontAwesomeIcons.bone, "Nome Pet Inválido",
-            "Digite nome completo do seu Pet,\n - Ex.:Pablo Escobar");
+        // alertaErro(context, FontAwesomeIcons.bone, "Nome Pet Inválido",
+        //     "Digite nome completo do seu Pet,\n - Ex.:Pablo Escobar");
       });
       return false;
     } else {
@@ -172,8 +172,8 @@ class _RegMyPetState extends State<RegMyPet> {
       setState(() {
         erroEspecie = true;
         print("Espécie inválida");
-        alertaErro(context, FontAwesomeIcons.paw, "Espécie inválida",
-            "Selecione espécie do seu animal corretamente.");
+        // alertaErro(context, FontAwesomeIcons.paw, "Espécie inválida",
+        //     "Selecione espécie do seu animal corretamente.");
       });
       return false;
     } else {
@@ -190,8 +190,8 @@ class _RegMyPetState extends State<RegMyPet> {
       setState(() {
         erroSexoPet = true;
         print("Sexo do Pet inválido");
-        alertaErro(context, FontAwesomeIcons.venusMars, "Sexo do Pet Inválido",
-            "Selecione sexo do seu animal corretamente.");
+        // alertaErro(context, FontAwesomeIcons.venusMars, "Sexo do Pet Inválido",
+        //     "Selecione sexo do seu animal corretamente.");
       });
       return false;
     } else {
@@ -234,33 +234,33 @@ class _RegMyPetState extends State<RegMyPet> {
           child: Column(
             children: <Widget>[
               Center(child: conta_passos('1 de 3')),
-              sizebox(30.0),
+              // sizebox(30.0),
               Center(
                 child: pergunta_form('Conhecendo seu Pet'),
               ),
-              sizebox(50.0),
+              // sizebox(50.0),
             ],
           ),
         ),
-        sizebox(10.0),
-        info_dados(context),
-        sizebox(20.0),
-        textFielNomePet(
-            null, _namePetController, erroNomePet, "Nome do Animal"),
-        sizebox(30.0),
-        dropdown(_especieController, erroEspecie, FontAwesomeIcons.paw,
-            "Espécie", null, listDropEspecie, (value) => _selectEspecie(value)),
-        sizebox(30.0),
-        dropdown(_sexoPetController, erroSexoPet, FontAwesomeIcons.venusMars,
-            "Sexo", null, listDropSexo, (value) => _selectSexo(value)),
-        sizebox(40.0),
-        buttonConfirmForm(
-          () {
-            _validaForm(_namePetController.text, _especieController.text,
-                _sexoPetController.text);
-          },
-        ),
-        sizebox(20.0),
+        // sizebox(10.0),
+        // info_dados(context),
+        // sizebox(20.0),
+        // textFielNomePet(
+        //     null, _namePetController, erroNomePet, "Nome do Animal"),
+        // sizebox(30.0),
+        // dropdown(_especieController, erroEspecie, FontAwesomeIcons.paw,
+        //     "Espécie", null, listDropEspecie, (value) => _selectEspecie(value)),
+        // sizebox(30.0),
+        // dropdown(_sexoPetController, erroSexoPet, FontAwesomeIcons.venusMars,
+        //     "Sexo", null, listDropSexo, (value) => _selectSexo(value)),
+        // sizebox(40.0),
+        // buttonConfirmForm(
+        //   () {
+        //     _validaForm(_namePetController.text, _especieController.text,
+        //         _sexoPetController.text);
+        //   },
+        // ),
+        // sizebox(20.0),
       ]),
     );
   }
