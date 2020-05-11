@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:petsaojoao/components/foundation_form/splash_screen_foundation.dart';
 import 'my_pet_info_first.dart';
 
-import 'package:petsaojoao/screens/reg_my_pet/picture_instructions.dart';
-
 class RegPet extends StatefulWidget {
   @override
   _RegPetState createState() => _RegPetState();
