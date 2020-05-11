@@ -4,9 +4,8 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:path/path.dart' show join;
-import 'package:path_provider/path_provider.dart';
-import 'package:petsaojoao/components/reg_my_pet/picture_info.dart';
+import 'package:petsaojoao/models/back_reg_my_pet/picture_info.dart';
+import 'package:petsaojoao/models/back_reg_my_pet/sizes_info.dart';
 
 import 'package:petsaojoao/screens/reg_my_pet/confirm_screen.dart';
 
@@ -63,23 +62,39 @@ class _TakeThirdPicState extends State<TakeThirdPic> {
             return ListView(
               children: <Widget>[
                 Container(
-                    height: MediaQuery.of(context).size.height / 1.5,
+                    height: widgetSize(context, 1.5),
                     child: CameraPreview(_controller)),
                 Container(
                   padding: EdgeInsets.all(20),
-                  child: Text('2 de 3 fotos registradas'),
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        child: Text(
+                          "2 de 3 ",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 25),
+                        ),
+                      ),
+                      Container(
+                        child: Text(
+                          ' fotos registradas',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 Center(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Container(
-                        height: 120,
+                        height: widgetSize(context, 10),
                         padding: EdgeInsets.only(right: 20),
                         child: Image.file(File(image1)),
                       ),
                       Container(
-                        height: 120,
+                        height: widgetSize(context, 10),
                         child: Image.file(File(image2)),
                       ),
                     ],
@@ -102,13 +117,9 @@ class _TakeThirdPicState extends State<TakeThirdPic> {
           try {
             await _initializeControllerFuture;
 
-            final path =
-                join((await getTemporaryDirectory()).path, 'PET-img3.png');
+            final path = await getFirstPic();
 
-            if (File(path).existsSync()) {
-              File(path).deleteSync(recursive: true);
-              PaintingBinding.instance.imageCache.clear();
-            }
+            await verifyPicPath(path);
 
             await _controller.takePicture(path);
 

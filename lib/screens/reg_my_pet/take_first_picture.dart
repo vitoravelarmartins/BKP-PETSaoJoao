@@ -5,7 +5,11 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
-import 'package:petsaojoao/components/reg_my_pet/camera_info.dart';
+
+import 'package:petsaojoao/models/back_reg_my_pet/camera_info.dart';
+import 'package:petsaojoao/models/back_reg_my_pet/orientation_organize.dart';
+import 'package:petsaojoao/models/back_reg_my_pet/sizes_info.dart';
+
 import 'package:petsaojoao/screens/reg_my_pet/take_second_picture.dart';
 
 class TakeFirstPic extends StatefulWidget {
@@ -27,6 +31,8 @@ class _TakeFirstPicState extends State<TakeFirstPic> {
   @override
   void initState() {
     super.initState();
+    blockOrientation();
+
     _controller = CameraController(
       widget.camera,
       ResolutionPreset.medium,
@@ -51,18 +57,34 @@ class _TakeFirstPicState extends State<TakeFirstPic> {
             return ListView(
               children: <Widget>[
                 Container(
-                    height: MediaQuery.of(context).size.height / 1.5,
+                    height: widgetSize(context, 1.5),
                     child: CameraPreview(_controller)),
                 Container(
                   padding: EdgeInsets.all(20),
-                  child: Text('0 de 3 fotos registradas'),
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        child: Text(
+                          "0 de 3 ",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 25),
+                        ),
+                      ),
+                      Container(
+                        child: Text(
+                          ' fotos registradas',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 Center(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Container(
-                        height: 120,
+                        height: widgetSize(context, 10),
                       ),
                     ],
                   ),

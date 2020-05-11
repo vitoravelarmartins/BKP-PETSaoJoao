@@ -2,6 +2,10 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'package:petsaojoao/models/back_reg_my_pet/orientation_organize.dart';
+
+import 'package:petsaojoao/screens/reg_my_pet/end_reg_my_pet.dart';
+
 class ConfirmScreen extends StatefulWidget {
   final String image1;
   final String image2;
@@ -43,8 +47,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
       body: ListView(
         padding: EdgeInsets.all(0),
         children: <Widget>[
-          Container(
-          ),
+          Container(),
           Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -85,6 +88,25 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
         ],
       ),
       backgroundColor: Colors.white,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.arrow_forward),
+        onPressed: () async {
+
+          await releaseOrientation();
+
+          try {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => EndRegMyPet(),
+              ),
+            );
+          } catch (e) {
+            print(e);
+          }
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
