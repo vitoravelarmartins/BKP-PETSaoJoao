@@ -5,8 +5,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
-
-import 'package:petsaojoao/components/comp_reg_my_pet/camera_info.dart';
+import 'package:petsaojoao/components/reg_my_pet/camera_info.dart';
 import 'package:petsaojoao/screens/reg_my_pet/take_second_picture.dart';
 
 class TakeFirstPic extends StatefulWidget {

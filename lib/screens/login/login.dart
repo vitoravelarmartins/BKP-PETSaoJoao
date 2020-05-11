@@ -18,7 +18,7 @@ class Login extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => dashboard()),
+                    MaterialPageRoute(builder: (context) => Dashboard()),
                   );
                 },
                 child: Text("Ir Para dashboard")),

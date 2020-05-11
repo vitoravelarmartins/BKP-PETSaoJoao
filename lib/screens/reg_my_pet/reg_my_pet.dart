@@ -2,10 +2,8 @@
 
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-// import 'package:petsaojoao/components/comp_publico/sizebox.dart';
-import 'package:progress_indicators/progress_indicators.dart';
-import 'my_pet_info_screen1.dart';
+import 'package:petsaojoao/components/foundation_form/splash_screen_foundation.dart';
+import 'my_pet_info_first.dart';
 
 class RegPet extends StatefulWidget {
   @override
@@ -36,80 +34,16 @@ class _RegPetState extends State<RegPet> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-          backgroundColor: Colors.blueAccent[200],
-          body: ListView(children: <Widget>[
-            Container(child: Image.asset('assets/background/superior.png')),
-            SizedBox(
-              height: 100,
-            ),
-            Center(
-              child: Container(
-                width: 350,
-                child: Text(
-                  'Vamos Cadastrar seu Pet',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 35,
-                  ),
-                ),
-              ),
-            ),
-            // sizebox(20.0),
-            Center(
-              child: CollectionSlideTransition(
-                children: <Widget>[
-                  Transform.rotate(
-                    angle: -80,
-                    child: GlowingProgressIndicator(
-                      duration: Duration(milliseconds: 550),
-                      child: Icon(
-                        FontAwesomeIcons.paw,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Transform.rotate(
-                    angle: -80,
-                    child: GlowingProgressIndicator(
-                      duration: Duration(milliseconds: 1000),
-                      child: Icon(
-                        FontAwesomeIcons.paw,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Transform.rotate(
-                    angle: -80,
-                    child: GlowingProgressIndicator(
-                      duration: Duration(milliseconds: 1550),
-                      child: Icon(
-                        FontAwesomeIcons.paw,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 100,
-            ),
-            Container(child: Image.asset('assets/background/inferior.png')),
-          ])),
+        backgroundColor: Colors.blueAccent[200],
+        body: SplahScreenFoundation("Vamos cadastrar seu Pet"),
+      ),
     );
   }
 }
 
 Route _createRoute() {
   return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => RegMyPet(),
+    pageBuilder: (context, animation, secondaryAnimation) => MyPetInfoFirst(),
     transitionDuration: const Duration(milliseconds: 1800),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       var begin = Offset(0.0, 1.0);

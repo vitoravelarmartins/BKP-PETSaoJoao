@@ -6,20 +6,18 @@ class FullNameValidator {
     const nameInvalid = "Nome precisa ser completo";
     const okValidate = "Ok! Nome Passou";
     var namelogger = Logger(printer: PrettyPrinter());
-
-    if (value.isEmpty) {
-      return requiredField;
-    }
     String patttern =
         r'(^[a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇ ]*$)';
     RegExp regExp = new RegExp(patttern);
     var ind = value.indexOf(" ");
 
-    if (!regExp.hasMatch(value) || value.length < 5 || ind == -1) {
+    if (value.isEmpty) {
+      return requiredField;
+    } else if (!regExp.hasMatch(value) || value.length < 5 || ind == -1) {
       return nameInvalid;
+    } else {
+      namelogger.i("$okValidate");
+      return null;
     }
-    ;
-    namelogger.i("$okValidate");
-    return null;
   }
 }

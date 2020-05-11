@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:petsaojoao/components/foundation_form/appbar_foundation.dart';
 import 'package:petsaojoao/components/foundation_form/body_foundation.dart';
 import 'package:petsaojoao/components/foundation_form/button_confirmForm.dart';
-import 'package:petsaojoao/components/register_tutor/data_security_info.dart';
+import 'package:petsaojoao/components/foundation_form/data_security_info.dart';
 import 'package:petsaojoao/models/validators/cep_validator.dart';
 import 'package:petsaojoao/models/validators/house_number_validator.dart';
 import 'package:petsaojoao/models/validators/neighborhood_validator.dart';

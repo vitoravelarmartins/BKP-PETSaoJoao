@@ -41,7 +41,7 @@ class _EndRegisterTutorState extends State<EndRegisterTutor> {
 
 Route _createRoute() {
   return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => dashboard(),
+    pageBuilder: (context, animation, secondaryAnimation) => Dashboard(),
     transitionDuration: const Duration(milliseconds: 1800),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       var begin = Offset(0.0, 1.0);
