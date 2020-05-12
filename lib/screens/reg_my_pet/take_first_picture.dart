@@ -10,18 +10,7 @@ import 'package:petsaojoao/models/back_reg_my_pet/picture_info.dart';
 import 'package:petsaojoao/models/back_reg_my_pet/orientation_organize.dart';
 import 'package:petsaojoao/models/back_reg_my_pet/sizes_info.dart';
 
-<<<<<<< HEAD
-import 'package:petsaojoao/screens/reg_my_pet/take_second_picture.dart';
-<<<<<<< HEAD
-=======
-import 'package:petsaojoao/components/my_pet/camera_info.dart';
-import 'package:petsaojoao/screens/cad_meu_animal/take_second_picture.dart';
->>>>>>> 69d836a... Alterando imports para 'Screens':lib/screens/cad_meu_animal/take_first_picture.dart
-=======
->>>>>>> d659800... Produção Screen Personal_Info
-=======
 import 'take_second_picture.dart';
->>>>>>> 2b38b9c... Melhoria Layout Camera e Detalhes
 
 class TakeFirstPic extends StatefulWidget {
   final CameraDescription camera;

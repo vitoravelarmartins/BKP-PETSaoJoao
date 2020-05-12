@@ -2,13 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:petsaojoao/models/back_reg_my_pet/camera_info.dart';
 import 'package:petsaojoao/screens/reg_my_pet/take_first_picture.dart';
-<<<<<<< HEAD
-=======
-import 'package:petsaojoao/components/my_pet/camera_info.dart';
-import 'package:petsaojoao/screens/cad_meu_animal/take_first_picture.dart';
->>>>>>> 69d836a... Alterando imports para 'Screens':lib/screens/cad_meu_animal/picture_instructions.dart
-=======
->>>>>>> d659800... Produção Screen Personal_Info
 
 class PicInstructions extends StatelessWidget {
   @override

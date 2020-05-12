@@ -46,22 +46,7 @@ class Dashboard extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-<<<<<<< HEAD
-<<<<<<< HEAD:lib/pages/dashboard/dashboard.dart
-                    MaterialPageRoute(
-                        builder: (context) => RegMyPet()),
-<<<<<<< HEAD
-=======
-                    MaterialPageRoute(builder: (context) => CadastroAnimal()),
->>>>>>> 4fe4a56... CorrigindoNomeDasClasses
-=======
->>>>>>> 3cb4d88... add
-=======
-                    MaterialPageRoute(builder: (context) => RegMyPet()),
->>>>>>> 386f232... Alterar Pages p/ screens:lib/screens/dashboard/dashboard.dart
-=======
                     MaterialPageRoute(builder: (context) => RegPet()),
->>>>>>> bc135e0... inico tradução
                   );
                 },
                 child: Text("Cadastro  Meu Animal  ")),

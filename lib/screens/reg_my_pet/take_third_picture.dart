@@ -7,22 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:petsaojoao/models/back_reg_my_pet/picture_info.dart';
 import 'package:petsaojoao/models/back_reg_my_pet/sizes_info.dart';
 
-<<<<<<< HEAD
-import 'package:petsaojoao/screens/reg_my_pet/confirm_screen.dart';
-<<<<<<< HEAD
-import 'package:petsaojoao/components/comp_reg_my_pet/picture_info.dart';
-<<<<<<< HEAD
-=======
-import 'package:petsaojoao/screens/cad_meu_animal/confirm_screen.dart';
-import 'package:petsaojoao/components/my_pet/picture_info.dart';
->>>>>>> 69d836a... Alterando imports para 'Screens':lib/screens/cad_meu_animal/take_third_picture.dart
-=======
->>>>>>> d659800... Produção Screen Personal_Info
-=======
->>>>>>> b5e411a... RegMyPet produzindo
-=======
 import 'confirm_screen.dart';
->>>>>>> 2b38b9c... Melhoria Layout Camera e Detalhes
 
 class TakeThirdPic extends StatefulWidget {
   final CameraDescription camera;

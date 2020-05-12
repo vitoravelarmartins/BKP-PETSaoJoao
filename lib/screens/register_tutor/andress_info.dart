@@ -99,7 +99,7 @@ class _FormAndressState extends State<FormAndress> {
       child: Column(children: <Widget>[
         TextFormField(
           validator: (value) {
-            //print(CepValidador().searchingCep(value, context));
+            CepValidador().searchingCep(_cepController.text, context);
             return CepValidador()
                 .validate(context, value, _cityController.text);
           },
