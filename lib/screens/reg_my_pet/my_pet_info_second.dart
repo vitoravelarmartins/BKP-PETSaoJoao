@@ -5,9 +5,9 @@ import 'package:petsaojoao/components/foundation_form/appbar_foundation.dart';
 import 'package:petsaojoao/components/foundation_form/body_foundation.dart';
 import 'package:petsaojoao/components/foundation_form/button_confirmForm.dart';
 import 'package:petsaojoao/components/foundation_form/data_security_info.dart';
+import 'package:petsaojoao/models/validators/birth_date_validator.dart';
 import 'package:petsaojoao/models/validators/breed_validator.dart';
 import 'package:petsaojoao/models/validators/coat_color_validator.dart';
-import 'package:petsaojoao/screens/reg_my_pet/birth_date_validator.dart';
 
 import 'my_pet_info_third.dart';
 

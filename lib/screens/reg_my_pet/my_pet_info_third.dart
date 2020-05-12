@@ -4,10 +4,10 @@ import 'package:petsaojoao/components/foundation_form/appbar_foundation.dart';
 import 'package:petsaojoao/components/foundation_form/body_foundation.dart';
 import 'package:petsaojoao/components/foundation_form/button_confirmForm.dart';
 import 'package:petsaojoao/components/foundation_form/data_security_info.dart';
+import 'package:petsaojoao/models/validators/castration_validator.dart';
 import 'package:petsaojoao/models/validators/microchip_validator.dart';
 import 'package:petsaojoao/models/validators/size_pet_validator.dart';
 
-import 'castration_validator.dart';
 import 'initial_pics_pet.dart';
 
 TextEditingController _sizePetController = new TextEditingController();
