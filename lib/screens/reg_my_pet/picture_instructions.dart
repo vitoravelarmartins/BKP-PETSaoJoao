@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:petsaojoao/components/reg_my_pet/camera_info.dart';
+import 'package:flutter/services.dart';
+import 'package:petsaojoao/models/back_reg_my_pet/camera_info.dart';
 import 'package:petsaojoao/screens/reg_my_pet/take_first_picture.dart';
 
 class PicInstructions extends StatelessWidget {
@@ -24,7 +25,7 @@ class PicInstructions extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 25,
+                    fontSize: 20,
                   ),
                 ),
               ),
@@ -35,6 +36,8 @@ class PicInstructions extends StatelessWidget {
               disabledColor: Colors.green,
               disabledTextColor: Colors.grey,
               onPressed: () async {
+                SystemChrome.setEnabledSystemUIOverlays([]);
+
                 final camera = await getCameraInfo();
 
                 Navigator.push(
